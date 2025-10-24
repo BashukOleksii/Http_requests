@@ -24,7 +24,7 @@ jobs:
           dotnet-version: '8.0.x'
 
       - name: Restore
-        run: dotnet restore ./SubscriptionManager.sln
+        run: dotnet restore ./SubscriptionManager/SubscriptionManager.sln
 
       - name: Run Unit Tests
-        run: dotnet test ./SubscriptionManager.Tests/SubscriptionManager.Tests.csproj --configuration Release
+        run: dotnet test ./SubscriptionManager/SubscriptionManager.Tests/SubscriptionManager.Tests.csproj --configuration Release
