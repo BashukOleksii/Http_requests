@@ -1,5 +1,7 @@
 name: Build
 
+
+
 on:
   pull_request:
     branches:
@@ -7,6 +9,9 @@ on:
       - dev
       - release/*
       - main
+
+
+
 
 jobs:
   build:
