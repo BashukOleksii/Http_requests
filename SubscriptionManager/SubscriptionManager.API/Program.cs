@@ -1,3 +1,7 @@
+using FluentValidation;
+using FluentValidation.AspNetCore;
+using SubscriptionManager.API.Validators;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -10,11 +14,15 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(oprions =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    var xmlFile = $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+    oprions.IncludeXmlComments(xmlPath);
+});
+
+builder.Services.AddValidatorsFromAssemblyContaining<PeopleValidator>();
 
 app.UseAuthorization();
 
