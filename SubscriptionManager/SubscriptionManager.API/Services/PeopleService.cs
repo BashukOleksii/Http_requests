@@ -47,8 +47,6 @@ namespace SubscriptionManager.API.Services
         public async Task<bool> IsExist(string id) =>
             await _peopleRepository.GetByIdAsync(id) is not null;
             
-        
-
         public Task UpdateAsync(string id, PeopleItem element)
         {
             throw new NotImplementedException();
