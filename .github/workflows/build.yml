@@ -25,7 +25,7 @@ jobs:
           dotnet-version: '8.0.x'
 
       - name: Restore
-        run: dotnet restore ./SubscriptionManager.sln
+        run: dotnet restore ./SubscriptionManager/SubscriptionManager.sln
 
       - name: Build
-        run: dotnet build ./SubscriptionManager.sln --configuration Release --no-restore
+        run: dotnet build ./SubscriptionManager/SubscriptionManager.sln --configuration Release --no-restore
