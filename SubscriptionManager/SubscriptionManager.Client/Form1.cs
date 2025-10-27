@@ -1,98 +1,128 @@
 using SubscriptionManager.Core.Models;
-using System.Net.Http.Json; // Потрібен NuGet 'System.Net.Http.Json'
+using System.Net.Http.Json; // РџРѕС‚СЂС–Р±РµРЅ NuGet 'System.Net.Http.Json'
+using System.Text;
 using System.Text.Json;
 
 namespace SubscriptionManager.Client
 {
     public partial class Form1 : Form
     {
-        // === ВАЖЛИВО! ===
-        // Зміни цей URL на той, де запущено твій API
+        // Р’РёРєРѕСЂРёСЃС‚РѕРІСѓС”РјРѕ РїРѕСЂС‚ 5070
         private const string BASE_URL = "http://localhost:5070";
-        // ===============
 
         private readonly HttpClient _httpClient;
         private readonly JsonSerializerOptions _jsonOptions;
 
         public Form1()
         {
-            InitializeComponent(); // Цей метод генерується дизайнером
+            InitializeComponent(); 
 
-            // Налаштовуємо HttpClient
             _httpClient = new HttpClient
             {
                 BaseAddress = new Uri(BASE_URL)
             };
 
-            // Налаштовуємо JSON, щоб імена властивостей (Id, Name) 
-            // не були чутливі до регістру при десеріалізації
             _jsonOptions = new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true
             };
         }
 
-        // --- Обробники подій для вкладки "Користувачі" ---
-
+        // --- РћР±СЂРѕР±РЅРёРє GET (Р’СЃС–) ---
         private async void btnGetAllPeople_Click(object sender, EventArgs e)
         {
             try
             {
-                // Очищуємо попередні результати
                 dgvAllPeople.DataSource = null;
-
-                // Робимо асинхронний запит до /api/People
                 var peopleList = await _httpClient.GetFromJsonAsync<List<PeopleItem>>("api/People", _jsonOptions);
 
-                // Відображаємо дані у DataGridView
                 if (peopleList != null && peopleList.Any())
                 {
                     dgvAllPeople.DataSource = peopleList;
                 }
                 else
                 {
-                    MessageBox.Show("Список користувачів порожній.", "Інформація", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("РЎРїРёСЃРѕРє РєРѕСЂРёСЃС‚СѓРІР°С‡С–РІ РїРѕСЂРѕР¶РЅС–Р№.", "Р†РЅС„РѕСЂРјР°С†С–СЏ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Помилка при отриманні даних: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"РџРѕРјРёР»РєР° РїСЂРё РѕС‚СЂРёРјР°РЅРЅС– РґР°РЅРёС…: {ex.Message}", "РџРѕРјРёР»РєР°", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
+        // --- РћР±СЂРѕР±РЅРёРє GET (Р·Р° ID) ---
         private async void btnGetPersonById_Click(object sender, EventArgs e)
         {
             string id = txtPersonId.Text.Trim();
             if (string.IsNullOrEmpty(id))
             {
-                MessageBox.Show("Будь ласка, введіть ID.", "Попередження", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Р‘СѓРґСЊ Р»Р°СЃРєР°, РІРІРµРґС–С‚СЊ ID.", "РџРѕРїРµСЂРµРґР¶РµРЅРЅСЏ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             try
             {
-                // Очищуємо поля
                 txtNameResult.Text = "";
                 txtEmailResult.Text = "";
 
-                // Робимо запит до /api/People/{id}
                 var person = await _httpClient.GetFromJsonAsync<PeopleItem>($"api/People/{id}", _jsonOptions);
 
                 if (person != null)
                 {
-                    // Відображаємо результат
                     txtNameResult.Text = person.Name;
                     txtEmailResult.Text = person.Email;
                 }
             }
-            // Обробляємо випадок, коли API повертає 404 (NotFound)
             catch (HttpRequestException httpEx) when (httpEx.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
-                MessageBox.Show($"Користувача з ID '{id}' не знайдено.", "Не знайдено", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"РљРѕСЂРёСЃС‚СѓРІР°С‡Р° Р· ID '{id}' РЅРµ Р·РЅР°Р№РґРµРЅРѕ.", "РќРµ Р·РЅР°Р№РґРµРЅРѕ", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Помилка при отриманні даних: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"РџРѕРјРёР»РєР° РїСЂРё РѕС‚СЂРёРјР°РЅРЅС– РґР°РЅРёС…: {ex.Message}", "РџРѕРјРёР»РєР°", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // --- РћР±СЂРѕР±РЅРёРє POST (РЎС‚РІРѕСЂРµРЅРЅСЏ) ---
+        private async void btnCreatePerson_Click(object sender, EventArgs e)
+        {
+            string name = txtCreateName.Text.Trim();
+            string email = txtCreateEmail.Text.Trim();
+
+            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(email))
+            {
+                MessageBox.Show("Р†Рј'СЏ С‚Р° Email РЅРµ РјРѕР¶СѓС‚СЊ Р±СѓС‚Рё РїРѕСЂРѕР¶РЅС–РјРё.", "РџРѕРјРёР»РєР° РІР°Р»С–РґР°С†С–С—", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var newPerson = new PeopleItem
+            {
+                Name = name,
+                Email = email
+            };
+
+            try
+            {
+                var response = await _httpClient.PostAsJsonAsync("api/People", newPerson, _jsonOptions);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var createdPerson = await response.Content.ReadFromJsonAsync<PeopleItem>(_jsonOptions);
+                    MessageBox.Show($"РљРѕСЂРёСЃС‚СѓРІР°С‡Р° СѓСЃРїС–С€РЅРѕ СЃС‚РІРѕСЂРµРЅРѕ!\nID: {createdPerson?.Id}\nР†Рј'СЏ: {createdPerson?.Name}", "РЈСЃРїС–С…", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    txtCreateName.Text = "";
+                    txtCreateEmail.Text = "";
+                }
+                else
+                {
+                    string errorContent = await response.Content.ReadAsStringAsync();
+                    MessageBox.Show($"РџРѕРјРёР»РєР°: {response.StatusCode}\n{errorContent}", "РџРѕРјРёР»РєР° СЃРµСЂРІРµСЂР°", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"РЎС‚Р°Р»Р°СЃСЏ РїРѕРјРёР»РєР°: {ex.Message}", "РџРѕРјРёР»РєР°", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

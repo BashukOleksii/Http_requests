@@ -1,4 +1,4 @@
-﻿namespace SubscriptionManager.Client
+namespace SubscriptionManager.Client
 {
     partial class Form1
     {
@@ -43,6 +43,11 @@
             this.txtPersonId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPageCreatePerson = new System.Windows.Forms.TabPage();
+            this.btnCreatePerson = new System.Windows.Forms.Button();
+            this.txtCreateEmail = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtCreateName = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.tabPageUpdatePerson = new System.Windows.Forms.TabPage();
             this.tabPageDeletePerson = new System.Windows.Forms.TabPage();
             this.tabPageSubscriptions = new System.Windows.Forms.TabPage();
@@ -52,6 +57,7 @@
             this.tabPageGetAllPeople.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllPeople)).BeginInit();
             this.tabPageGetOnePerson.SuspendLayout();
+            this.tabPageCreatePerson.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlMain
@@ -106,8 +112,8 @@
             // 
             this.dgvAllPeople.AllowUserToAddRows = false;
             this.dgvAllPeople.AllowUserToDeleteRows = false;
-            this.dgvAllPeople.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.dgvAllPeople.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvAllPeople.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAllPeople.Location = new System.Drawing.Point(6, 41);
@@ -206,12 +212,60 @@
             // 
             // tabPageCreatePerson
             // 
+            this.tabPageCreatePerson.Controls.Add(this.btnCreatePerson);
+            this.tabPageCreatePerson.Controls.Add(this.txtCreateEmail);
+            this.tabPageCreatePerson.Controls.Add(this.label5);
+            this.tabPageCreatePerson.Controls.Add(this.txtCreateName);
+            this.tabPageCreatePerson.Controls.Add(this.label4);
             this.tabPageCreatePerson.Location = new System.Drawing.Point(4, 24);
             this.tabPageCreatePerson.Name = "tabPageCreatePerson";
             this.tabPageCreatePerson.Size = new System.Drawing.Size(762, 399);
             this.tabPageCreatePerson.TabIndex = 2;
             this.tabPageCreatePerson.Text = "Створити";
             this.tabPageCreatePerson.UseVisualStyleBackColor = true;
+            // 
+            // btnCreatePerson
+            // 
+            this.btnCreatePerson.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnCreatePerson.Location = new System.Drawing.Point(19, 137);
+            this.btnCreatePerson.Name = "btnCreatePerson";
+            this.btnCreatePerson.Size = new System.Drawing.Size(121, 31);
+            this.btnCreatePerson.TabIndex = 4;
+            this.btnCreatePerson.Text = "Створити";
+            this.btnCreatePerson.UseVisualStyleBackColor = true;
+            this.btnCreatePerson.Click += new System.EventHandler(this.btnCreatePerson_Click);
+            // 
+            // txtCreateEmail
+            // 
+            this.txtCreateEmail.Location = new System.Drawing.Point(19, 90);
+            this.txtCreateEmail.Name = "txtCreateEmail";
+            this.txtCreateEmail.Size = new System.Drawing.Size(300, 23);
+            this.txtCreateEmail.TabIndex = 3;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(19, 72);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(73, 15);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Введіть Email:";
+            // 
+            // txtCreateName
+            // 
+            this.txtCreateName.Location = new System.Drawing.Point(19, 36);
+            this.txtCreateName.Name = "txtCreateName";
+            this.txtCreateName.Size = new System.Drawing.Size(300, 23);
+            this.txtCreateName.TabIndex = 1;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(19, 18);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(66, 15);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Введіть ім\'я:";
             // 
             // tabPageUpdatePerson
             // 
@@ -256,38 +310,40 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllPeople)).EndInit();
             this.tabPageGetOnePerson.ResumeLayout(false);
             this.tabPageGetOnePerson.PerformLayout();
+            this.tabPageCreatePerson.ResumeLayout(false);
+            this.tabPageCreatePerson.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        // Головний TabControl для Ресурсів
         private TabControl tabControlMain;
-
-        // --- Сторінка Користувачів ---
         private TabPage tabPagePeople;
-        // Вкладений TabControl для Операцій
         private TabControl tabControlPeopleOperations;
-        // Вкладка "Отримати всіх"
-        private TabPage tabPageGetAllPeople;
-        private Button btnGetAllPeople;
-        private DataGridView dgvAllPeople;
-        // Вкладка "Отримати одного"
-        private TabPage tabPageGetOnePerson;
-        private Label label1;
-        private TextBox txtPersonId;
-        private Button btnGetPersonById;
-        private Label label2;
-        private TextBox txtNameResult;
-        private Label label3;
-        private TextBox txtEmailResult;
-        // Заглушки для майбутніх операцій
-        private TabPage tabPageCreatePerson;
         private TabPage tabPageUpdatePerson;
         private TabPage tabPageDeletePerson;
-
-        // --- Сторінка Підписок (поки порожня, для розширення) ---
         private TabPage tabPageSubscriptions;
+        
+        // --- Елементи для GET ---
+        private TabPage tabPageGetAllPeople;
+        private DataGridView dgvAllPeople;
+        private Button btnGetAllPeople;
+        private TabPage tabPageGetOnePerson;
+        private TextBox txtEmailResult;
+        private Label label3;
+        private TextBox txtNameResult;
+        private Label label2;
+        private Button btnGetPersonById;
+        private TextBox txtPersonId;
+        private Label label1;
+
+        // --- Елементи для POST ---
+        private TabPage tabPageCreatePerson;
+        private Label label4;
+        private TextBox txtCreateName;
+        private Label label5;
+        private TextBox txtCreateEmail;
+        private Button btnCreatePerson;
     }
 }
