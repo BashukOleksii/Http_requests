@@ -15,6 +15,5 @@ namespace SubscriptionManager.Core.Interfaces
         Task CreateAsync(PeopleItem  item);
         Task UpdateAsync(string id, PeopleItem item);
         Task DeletAsynce(string id);
-        Task<bool> IsExistAsync(string id);
     }
 }
