@@ -1,4 +1,5 @@
-﻿using SubscriptionManager.Core.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using SubscriptionManager.Core.Models;
 
 namespace SubscriptionManager.API.IServices
 {

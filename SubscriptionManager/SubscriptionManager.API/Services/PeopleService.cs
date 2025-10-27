@@ -43,9 +43,12 @@ namespace SubscriptionManager.API.Services
             return people;
         }
             
-        public Task UpdateAsync(string id, PeopleItem element)
+        public async Task UpdateAsync(string id, PeopleItem element)
         {
-            throw new NotImplementedException();
+            if (!await _peopleRepository.IsExist(id))
+                throw new KeyNotFoundException($"Не знайдено користувача за Id {id}");
+
+            await _peopleRepository.UpdateAsync(id, element);
         }
 
        
