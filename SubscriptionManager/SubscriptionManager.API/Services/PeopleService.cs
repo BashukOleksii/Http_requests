@@ -15,12 +15,16 @@ namespace SubscriptionManager.API.Services
             _peopleRepository = peopleRepository;
         }
 
+
         public async Task CreateAsync(PeopleItem element) =>
             await _peopleRepository.CreateAsync(element);
         
-        public Task DeleteAsync(string id)
+        public async Task DeleteAsync(string id)
         {
-            throw new NotImplementedException();
+            if (!await _peopleRepository.IsExist(id))
+                throw new KeyNotFoundException($"Не знайдено користувача за Id {id}");
+
+            await _peopleRepository.DeletAsynce(id);
         }
 
         public async Task<IEnumerable<PeopleItem>> GetAllAsync()
@@ -43,9 +47,12 @@ namespace SubscriptionManager.API.Services
             return people;
         }
             
-        public Task UpdateAsync(string id, PeopleItem element)
+        public async Task UpdateAsync(string id, PeopleItem element)
         {
-            throw new NotImplementedException();
+            if (!await _peopleRepository.IsExist(id))
+                throw new KeyNotFoundException($"Не знайдено користувача за Id {id}");
+
+            await _peopleRepository.UpdateAsync(id, element);
         }
 
        
