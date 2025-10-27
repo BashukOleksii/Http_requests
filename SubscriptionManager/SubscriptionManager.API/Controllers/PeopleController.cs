@@ -68,6 +68,20 @@ namespace SubscriptionManager.API.Controllers
             }
         }
 
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(string id)
+        {
+            try
+            {
+                await _peopleService.DeleteAsync(id);
+                return NoContent();
+            }
+            catch (KeyNotFoundException kex)
+            {
+                return NotFound(kex.Message);
+            }
+        }
+
 
 
     }
