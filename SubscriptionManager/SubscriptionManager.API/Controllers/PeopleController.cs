@@ -44,5 +44,16 @@ namespace SubscriptionManager.API.Controllers
                 return NotFound(kex.Message);
             }
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(PeopleItem people)
+        {
+            await _peopleService.CreateAsync(people);
+
+            return CreatedAtAction(nameof(GetById), new { Id = people.Id }, people);
+        }
+        
+
+        
     }
 }
