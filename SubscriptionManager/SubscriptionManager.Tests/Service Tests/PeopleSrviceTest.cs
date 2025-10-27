@@ -87,16 +87,4 @@ public class PeopleServiceTests
             () => _service.GetAllAsync()
         );
     }
-
-    /// <summary>
-    /// Checks that DeleteAsync throws NotImplementedException
-    /// </summary>
-    [Fact]
-    public async Task DeleteAsync_WhenCalled_ShouldThrowNotImplementedException()
-    {
-        // Act & Assert
-        await Assert.ThrowsAsync<NotImplementedException>(
-            () => _service.DeleteAsync("any-id")
-        );
-    }
 }
