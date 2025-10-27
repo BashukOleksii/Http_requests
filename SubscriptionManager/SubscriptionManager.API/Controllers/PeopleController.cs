@@ -52,8 +52,23 @@ namespace SubscriptionManager.API.Controllers
 
             return CreatedAtAction(nameof(GetById), new { Id = people.Id }, people);
         }
-        
 
-        
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(string id,PeopleItem people)
+        {
+            try
+            {
+               await _peopleService.UpdateAsync(id,people);
+                return NoContent();
+
+            }
+            catch (KeyNotFoundException kex)
+            {
+                return NotFound(kex.Message);
+            }
+        }
+
+
+
     }
 }
