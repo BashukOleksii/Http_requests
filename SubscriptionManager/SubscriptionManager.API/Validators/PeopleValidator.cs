@@ -13,7 +13,7 @@ namespace SubscriptionManager.API.Validators
                 "далів від 5 до 10 малих англійських літер та за бажаням до 5 цифр)");
             RuleFor(x => x.Email)
                 .NotEmpty().WithMessage("Поле не може бути порожнім")
-                .EmailAddress().WithMessage("Електронна адрсе має відповідати стандарту");
+                .Matches(@"^[\w\.-]+@[\w\.-]+\.\w{2,}$").WithMessage("Електронна адрсе має відповідати стандарту");
         }
     }
 }
