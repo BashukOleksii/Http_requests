@@ -29,5 +29,8 @@ namespace SubscriptionManager.API.Repositories
 
         public async Task UpdateAsync(string id, PeopleItem item) =>
             await _collection.ReplaceOneAsync(x => x.Id == id, item);
+
+        public async Task<bool> IsExist(string id) =>
+            await _collection.Find(x => x.Id == id).AnyAsync();
     }
 }

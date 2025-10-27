@@ -1,4 +1,5 @@
-﻿using SubscriptionManager.API.IServices;
+﻿using MongoDB.Driver;
+using SubscriptionManager.API.IServices;
 using SubscriptionManager.Core.Interfaces;
 using SubscriptionManager.Core.Models;
 using System.Xml.Linq;
@@ -14,11 +15,9 @@ namespace SubscriptionManager.API.Services
             _peopleRepository = peopleRepository;
         }
 
-        public Task CreateAsync(PeopleItem element)
-        {
-            throw new NotImplementedException();
-        }
-
+        public async Task CreateAsync(PeopleItem element) =>
+            await _peopleRepository.CreateAsync(element);
+        
         public Task DeleteAsync(string id)
         {
             throw new NotImplementedException();
@@ -43,13 +42,12 @@ namespace SubscriptionManager.API.Services
 
             return people;
         }
-
-        public async Task<bool> IsExist(string id) =>
-            await _peopleRepository.GetByIdAsync(id) is not null;
             
         public Task UpdateAsync(string id, PeopleItem element)
         {
             throw new NotImplementedException();
         }
+
+       
     }
 }
