@@ -9,6 +9,5 @@ namespace SubscriptionManager.API.IServices
         Task<PeopleItem> GetByIdAsync(string id);
         Task DeleteAsync(string id);
         Task UpdateAsync(string id, PeopleItem element);
-        Task<bool> IsExist(string id);
     }
 }
