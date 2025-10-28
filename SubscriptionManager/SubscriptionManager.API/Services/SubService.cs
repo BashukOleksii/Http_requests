@@ -6,6 +6,7 @@ namespace SubscriptionManager.API.Services
 {
     public class SubService : ISubService
     {
+
         private readonly IPeopleRepository _peopleRepository;
         private readonly ISubRepository _subRepository;
 
@@ -25,6 +26,7 @@ namespace SubscriptionManager.API.Services
         }
         
 
+
         public Task DeleteAsync(string id)
         {
             throw new NotImplementedException();
@@ -35,6 +37,7 @@ namespace SubscriptionManager.API.Services
             var subs = await _subRepository.GetAllAsync();
 
             if (subs is null || !subs.Any())
+
                 throw new KeyNotFoundException("Немає підписок в списку");
 
             return subs;
@@ -51,6 +54,7 @@ namespace SubscriptionManager.API.Services
             return sub;
         }
         
+
 
         public Task UpdateAsync(string id, SubscriptionItem element)
         {
