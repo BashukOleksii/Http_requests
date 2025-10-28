@@ -27,9 +27,12 @@ namespace SubscriptionManager.API.Services
         
 
 
-        public Task DeleteAsync(string id)
+        public async Task DeleteAsync(string id)
         {
-            throw new NotImplementedException();
+            if (!await _subRepository.IsExist(id))
+                throw new KeyNotFoundException($"Не знайдено підписки з вказаним id: {id}");
+
+            await _subRepository.DeletAsynce(id);
         }
 
         public async Task<IEnumerable<SubscriptionItem>> GetAllAsync()
@@ -57,9 +60,15 @@ namespace SubscriptionManager.API.Services
         
 
 
-        public Task UpdateAsync(string id, SubscriptionItem element)
+        public async Task UpdateAsync(string id, SubscriptionItem element)
         {
-            throw new NotImplementedException();
+            if (!await _subRepository.IsExist(id))
+                throw new KeyNotFoundException($"Не знайдено елемент завказанм id {id}");
+
+            if(!await _peopleRepository.IsExist(element.OwnerId))
+                throw new ArgumentException($"Невірний власник для підписки");
+
+            await _subRepository.UpdateAsync(id, element);
         }
     }
 }
