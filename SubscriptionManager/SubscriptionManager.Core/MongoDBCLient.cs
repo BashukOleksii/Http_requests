@@ -22,6 +22,7 @@ namespace SubscriptionManager.Core
         {
             var conectionString = "mongodb+srv://bashuk0325oleksij_db_user:lZHXFstos2k8lAMX@data.t7bzerb.mongodb.net/?retryWrites=true&w=majority&appName=Data";
             var client = new MongoClient(conectionString);
+
             _database = client.GetDatabase("Elements");
         }
 
