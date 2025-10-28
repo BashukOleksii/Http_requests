@@ -1,4 +1,4 @@
-﻿namespace SubscriptionManager.Client
+namespace SubscriptionManager.Client
 {
     partial class Form1
     {
@@ -43,8 +43,23 @@
             this.txtPersonId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPageCreatePerson = new System.Windows.Forms.TabPage();
+            this.btnCreatePerson = new System.Windows.Forms.Button();
+            this.txtCreateEmail = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtCreateName = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.tabPageUpdatePerson = new System.Windows.Forms.TabPage();
+            this.btnUpdatePerson = new System.Windows.Forms.Button();
+            this.txtUpdateEmail = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtUpdateName = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtUpdateId = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.tabPageDeletePerson = new System.Windows.Forms.TabPage();
+            this.btnDeletePerson = new System.Windows.Forms.Button();
+            this.txtDeleteId = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.tabPageSubscriptions = new System.Windows.Forms.TabPage();
             this.tabControlMain.SuspendLayout();
             this.tabPagePeople.SuspendLayout();
@@ -52,6 +67,9 @@
             this.tabPageGetAllPeople.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllPeople)).BeginInit();
             this.tabPageGetOnePerson.SuspendLayout();
+            this.tabPageCreatePerson.SuspendLayout();
+            this.tabPageUpdatePerson.SuspendLayout();
+            this.tabPageDeletePerson.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlMain
@@ -206,6 +224,11 @@
             // 
             // tabPageCreatePerson
             // 
+            this.tabPageCreatePerson.Controls.Add(this.btnCreatePerson);
+            this.tabPageCreatePerson.Controls.Add(this.txtCreateEmail);
+            this.tabPageCreatePerson.Controls.Add(this.label5);
+            this.tabPageCreatePerson.Controls.Add(this.txtCreateName);
+            this.tabPageCreatePerson.Controls.Add(this.label4);
             this.tabPageCreatePerson.Location = new System.Drawing.Point(4, 24);
             this.tabPageCreatePerson.Name = "tabPageCreatePerson";
             this.tabPageCreatePerson.Size = new System.Drawing.Size(762, 399);
@@ -213,8 +236,58 @@
             this.tabPageCreatePerson.Text = "Створити";
             this.tabPageCreatePerson.UseVisualStyleBackColor = true;
             // 
+            // btnCreatePerson
+            // 
+            this.btnCreatePerson.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnCreatePerson.Location = new System.Drawing.Point(19, 137);
+            this.btnCreatePerson.Name = "btnCreatePerson";
+            this.btnCreatePerson.Size = new System.Drawing.Size(121, 31);
+            this.btnCreatePerson.TabIndex = 4;
+            this.btnCreatePerson.Text = "Створити";
+            this.btnCreatePerson.UseVisualStyleBackColor = true;
+            this.btnCreatePerson.Click += new System.EventHandler(this.btnCreatePerson_Click);
+            // 
+            // txtCreateEmail
+            // 
+            this.txtCreateEmail.Location = new System.Drawing.Point(19, 90);
+            this.txtCreateEmail.Name = "txtCreateEmail";
+            this.txtCreateEmail.Size = new System.Drawing.Size(300, 23);
+            this.txtCreateEmail.TabIndex = 3;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(19, 72);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(73, 15);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Введіть Email:";
+            // 
+            // txtCreateName
+            // 
+            this.txtCreateName.Location = new System.Drawing.Point(19, 36);
+            this.txtCreateName.Name = "txtCreateName";
+            this.txtCreateName.Size = new System.Drawing.Size(300, 23);
+            this.txtCreateName.TabIndex = 1;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(19, 18);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(66, 15);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Введіть ім\'я:";
+            // 
             // tabPageUpdatePerson
             // 
+            this.tabPageUpdatePerson.Controls.Add(this.btnUpdatePerson);
+            this.tabPageUpdatePerson.Controls.Add(this.txtUpdateEmail);
+            this.tabPageUpdatePerson.Controls.Add(this.label6);
+            this.tabPageUpdatePerson.Controls.Add(this.txtUpdateName);
+            this.tabPageUpdatePerson.Controls.Add(this.label7);
+            this.tabPageUpdatePerson.Controls.Add(this.txtUpdateId);
+            this.tabPageUpdatePerson.Controls.Add(this.label8);
             this.tabPageUpdatePerson.Location = new System.Drawing.Point(4, 24);
             this.tabPageUpdatePerson.Name = "tabPageUpdatePerson";
             this.tabPageUpdatePerson.Size = new System.Drawing.Size(762, 399);
@@ -222,14 +295,104 @@
             this.tabPageUpdatePerson.Text = "Оновити";
             this.tabPageUpdatePerson.UseVisualStyleBackColor = true;
             // 
+            // btnUpdatePerson
+            // 
+            this.btnUpdatePerson.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnUpdatePerson.Location = new System.Drawing.Point(19, 192);
+            this.btnUpdatePerson.Name = "btnUpdatePerson";
+            this.btnUpdatePerson.Size = new System.Drawing.Size(121, 31);
+            this.btnUpdatePerson.TabIndex = 6;
+            this.btnUpdatePerson.Text = "Оновити";
+            this.btnUpdatePerson.UseVisualStyleBackColor = true;
+            this.btnUpdatePerson.Click += new System.EventHandler(this.btnUpdatePerson_Click);
+            // 
+            // txtUpdateEmail
+            // 
+            this.txtUpdateEmail.Location = new System.Drawing.Point(19, 147);
+            this.txtUpdateEmail.Name = "txtUpdateEmail";
+            this.txtUpdateEmail.Size = new System.Drawing.Size(300, 23);
+            this.txtUpdateEmail.TabIndex = 5;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(19, 129);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(110, 15);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "Введіть новий Email:";
+            // 
+            // txtUpdateName
+            // 
+            this.txtUpdateName.Location = new System.Drawing.Point(19, 93);
+            this.txtUpdateName.Name = "txtUpdateName";
+            this.txtUpdateName.Size = new System.Drawing.Size(300, 23);
+            this.txtUpdateName.TabIndex = 3;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(19, 75);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(103, 15);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "Введіть нове ім\'я:";
+            // 
+            // txtUpdateId
+            // 
+            this.txtUpdateId.Location = new System.Drawing.Point(19, 38);
+            this.txtUpdateId.Name = "txtUpdateId";
+            this.txtUpdateId.Size = new System.Drawing.Size(300, 23);
+            this.txtUpdateId.TabIndex = 1;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(19, 20);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(147, 15);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Введіть ID для оновлення:";
+            // 
             // tabPageDeletePerson
             // 
+            this.tabPageDeletePerson.Controls.Add(this.btnDeletePerson);
+            this.tabPageDeletePerson.Controls.Add(this.txtDeleteId);
+            this.tabPageDeletePerson.Controls.Add(this.label9);
             this.tabPageDeletePerson.Location = new System.Drawing.Point(4, 24);
             this.tabPageDeletePerson.Name = "tabPageDeletePerson";
             this.tabPageDeletePerson.Size = new System.Drawing.Size(762, 399);
             this.tabPageDeletePerson.TabIndex = 4;
             this.tabPageDeletePerson.Text = "Видалити";
             this.tabPageDeletePerson.UseVisualStyleBackColor = true;
+            // 
+            // btnDeletePerson
+            // 
+            this.btnDeletePerson.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnDeletePerson.ForeColor = System.Drawing.Color.Red;
+            this.btnDeletePerson.Location = new System.Drawing.Point(19, 75);
+            this.btnDeletePerson.Name = "btnDeletePerson";
+            this.btnDeletePerson.Size = new System.Drawing.Size(121, 31);
+            this.btnDeletePerson.TabIndex = 2;
+            this.btnDeletePerson.Text = "Видалити";
+            this.btnDeletePerson.UseVisualStyleBackColor = true;
+            this.btnDeletePerson.Click += new System.EventHandler(this.btnDeletePerson_Click);
+            // 
+            // txtDeleteId
+            // 
+            this.txtDeleteId.Location = new System.Drawing.Point(19, 36);
+            this.txtDeleteId.Name = "txtDeleteId";
+            this.txtDeleteId.Size = new System.Drawing.Size(300, 23);
+            this.txtDeleteId.TabIndex = 1;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(19, 18);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(143, 15);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "Введіть ID для видалення:";
             // 
             // tabPageSubscriptions
             // 
@@ -256,38 +419,58 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllPeople)).EndInit();
             this.tabPageGetOnePerson.ResumeLayout(false);
             this.tabPageGetOnePerson.PerformLayout();
+            this.tabPageCreatePerson.ResumeLayout(false);
+            this.tabPageCreatePerson.PerformLayout();
+            this.tabPageUpdatePerson.ResumeLayout(false);
+            this.tabPageUpdatePerson.PerformLayout();
+            this.tabPageDeletePerson.ResumeLayout(false);
+            this.tabPageDeletePerson.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        // Головний TabControl для Ресурсів
         private TabControl tabControlMain;
-
-        // --- Сторінка Користувачів ---
         private TabPage tabPagePeople;
-        // Вкладений TabControl для Операцій
         private TabControl tabControlPeopleOperations;
-        // Вкладка "Отримати всіх"
-        private TabPage tabPageGetAllPeople;
-        private Button btnGetAllPeople;
-        private DataGridView dgvAllPeople;
-        // Вкладка "Отримати одного"
-        private TabPage tabPageGetOnePerson;
-        private Label label1;
-        private TextBox txtPersonId;
-        private Button btnGetPersonById;
-        private Label label2;
-        private TextBox txtNameResult;
-        private Label label3;
-        private TextBox txtEmailResult;
-        // Заглушки для майбутніх операцій
-        private TabPage tabPageCreatePerson;
-        private TabPage tabPageUpdatePerson;
-        private TabPage tabPageDeletePerson;
-
-        // --- Сторінка Підписок (поки порожня, для розширення) ---
         private TabPage tabPageSubscriptions;
+
+        // --- Елементи для GET ---
+        private TabPage tabPageGetAllPeople;
+        private DataGridView dgvAllPeople;
+        private Button btnGetAllPeople;
+        private TabPage tabPageGetOnePerson;
+        private TextBox txtEmailResult;
+        private Label label3;
+        private TextBox txtNameResult;
+        private Label label2;
+        private Button btnGetPersonById;
+        private TextBox txtPersonId;
+        private Label label1;
+
+        // --- Елементи для POST ---
+        private TabPage tabPageCreatePerson;
+        private Label label4;
+        private TextBox txtCreateName;
+        private Label label5;
+        private TextBox txtCreateEmail;
+        private Button btnCreatePerson;
+
+        // --- Елементи для PUT ---
+        private TabPage tabPageUpdatePerson;
+        private Button btnUpdatePerson;
+        private TextBox txtUpdateEmail;
+        private Label label6;
+        private TextBox txtUpdateName;
+        private Label label7;
+        private TextBox txtUpdateId;
+        private Label label8;
+
+        // --- (НОВЕ) Елементи для DELETE ---
+        private TabPage tabPageDeletePerson;
+        private Button btnDeletePerson;
+        private TextBox txtDeleteId;
+        private Label label9;
     }
 }
