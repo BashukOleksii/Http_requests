@@ -61,6 +61,30 @@ namespace SubscriptionManager.Client
             this.txtDeleteId = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.tabPageSubscriptions = new System.Windows.Forms.TabPage();
+            this.tabControlSubscriptionOperations = new System.Windows.Forms.TabControl();
+            this.tabPageGetAllSubscriptions = new System.Windows.Forms.TabPage();
+            this.dgvAllSubscriptions = new System.Windows.Forms.DataGridView();
+            this.btnGetAllSubscriptions = new System.Windows.Forms.Button();
+            this.tabPageGetOneSubscription = new System.Windows.Forms.TabPage();
+            this.txtSubStatusResult = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtSubServiceResult = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtSubOwnerIdResult = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.btnGetSubscriptionById = new System.Windows.Forms.Button();
+            this.txtSubscriptionId = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.tabPageCreateSubscription = new System.Windows.Forms.TabPage();
+            this.btnCreateSubscription = new System.Windows.Forms.Button();
+            this.txtCreateSubStatus = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtCreateSubService = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtCreateSubOwnerId = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.tabPageUpdateSubscription = new System.Windows.Forms.TabPage();
+            this.tabPageDeleteSubscription = new System.Windows.Forms.TabPage();
             this.tabControlMain.SuspendLayout();
             this.tabPagePeople.SuspendLayout();
             this.tabControlPeopleOperations.SuspendLayout();
@@ -70,6 +94,12 @@ namespace SubscriptionManager.Client
             this.tabPageCreatePerson.SuspendLayout();
             this.tabPageUpdatePerson.SuspendLayout();
             this.tabPageDeletePerson.SuspendLayout();
+            this.tabPageSubscriptions.SuspendLayout();
+            this.tabControlSubscriptionOperations.SuspendLayout();
+            this.tabPageGetAllSubscriptions.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAllSubscriptions)).BeginInit();
+            this.tabPageGetOneSubscription.SuspendLayout();
+            this.tabPageCreateSubscription.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlMain
@@ -396,6 +426,7 @@ namespace SubscriptionManager.Client
             // 
             // tabPageSubscriptions
             // 
+            this.tabPageSubscriptions.Controls.Add(this.tabControlSubscriptionOperations);
             this.tabPageSubscriptions.Location = new System.Drawing.Point(4, 24);
             this.tabPageSubscriptions.Name = "tabPageSubscriptions";
             this.tabPageSubscriptions.Padding = new System.Windows.Forms.Padding(3);
@@ -403,6 +434,246 @@ namespace SubscriptionManager.Client
             this.tabPageSubscriptions.TabIndex = 1;
             this.tabPageSubscriptions.Text = "Підписки (Subscriptions)";
             this.tabPageSubscriptions.UseVisualStyleBackColor = true;
+            // 
+            // tabControlSubscriptionOperations
+            // 
+            this.tabControlSubscriptionOperations.Controls.Add(this.tabPageGetAllSubscriptions);
+            this.tabControlSubscriptionOperations.Controls.Add(this.tabPageGetOneSubscription);
+            this.tabControlSubscriptionOperations.Controls.Add(this.tabPageCreateSubscription);
+            this.tabControlSubscriptionOperations.Controls.Add(this.tabPageUpdateSubscription);
+            this.tabControlSubscriptionOperations.Controls.Add(this.tabPageDeleteSubscription);
+            this.tabControlSubscriptionOperations.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlSubscriptionOperations.Location = new System.Drawing.Point(3, 3);
+            this.tabControlSubscriptionOperations.Name = "tabControlSubscriptionOperations";
+            this.tabControlSubscriptionOperations.SelectedIndex = 0;
+            this.tabControlSubscriptionOperations.Size = new System.Drawing.Size(770, 427);
+            this.tabControlSubscriptionOperations.TabIndex = 0;
+            // 
+            // tabPageGetAllSubscriptions
+            // 
+            this.tabPageGetAllSubscriptions.Controls.Add(this.dgvAllSubscriptions);
+            this.tabPageGetAllSubscriptions.Controls.Add(this.btnGetAllSubscriptions);
+            this.tabPageGetAllSubscriptions.Location = new System.Drawing.Point(4, 24);
+            this.tabPageGetAllSubscriptions.Name = "tabPageGetAllSubscriptions";
+            this.tabPageGetAllSubscriptions.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageGetAllSubscriptions.Size = new System.Drawing.Size(762, 399);
+            this.tabPageGetAllSubscriptions.TabIndex = 0;
+            this.tabPageGetAllSubscriptions.Text = "Отримати всіх";
+            this.tabPageGetAllSubscriptions.UseVisualStyleBackColor = true;
+            // 
+            // dgvAllSubscriptions
+            // 
+            this.dgvAllSubscriptions.AllowUserToAddRows = false;
+            this.dgvAllSubscriptions.AllowUserToDeleteRows = false;
+            this.dgvAllSubscriptions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvAllSubscriptions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAllSubscriptions.Location = new System.Drawing.Point(6, 41);
+            this.dgvAllSubscriptions.Name = "dgvAllSubscriptions";
+            this.dgvAllSubscriptions.ReadOnly = true;
+            this.dgvAllSubscriptions.RowTemplate.Height = 25;
+            this.dgvAllSubscriptions.Size = new System.Drawing.Size(750, 352);
+            this.dgvAllSubscriptions.TabIndex = 3;
+            // 
+            // btnGetAllSubscriptions
+            // 
+            this.btnGetAllSubscriptions.Location = new System.Drawing.Point(6, 6);
+            this.btnGetAllSubscriptions.Name = "btnGetAllSubscriptions";
+            this.btnGetAllSubscriptions.Size = new System.Drawing.Size(120, 29);
+            this.btnGetAllSubscriptions.TabIndex = 2;
+            this.btnGetAllSubscriptions.Text = "Оновити список";
+            this.btnGetAllSubscriptions.UseVisualStyleBackColor = true;
+            this.btnGetAllSubscriptions.Click += new System.EventHandler(this.btnGetAllSubscriptions_Click);
+            // 
+            // tabPageGetOneSubscription
+            // 
+            this.tabPageGetOneSubscription.Controls.Add(this.txtSubStatusResult);
+            this.tabPageGetOneSubscription.Controls.Add(this.label13);
+            this.tabPageGetOneSubscription.Controls.Add(this.txtSubServiceResult);
+            this.tabPageGetOneSubscription.Controls.Add(this.label12);
+            this.tabPageGetOneSubscription.Controls.Add(this.txtSubOwnerIdResult);
+            this.tabPageGetOneSubscription.Controls.Add(this.label11);
+            this.tabPageGetOneSubscription.Controls.Add(this.btnGetSubscriptionById);
+            this.tabPageGetOneSubscription.Controls.Add(this.txtSubscriptionId);
+            this.tabPageGetOneSubscription.Controls.Add(this.label10);
+            this.tabPageGetOneSubscription.Location = new System.Drawing.Point(4, 24);
+            this.tabPageGetOneSubscription.Name = "tabPageGetOneSubscription";
+            this.tabPageGetOneSubscription.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageGetOneSubscription.Size = new System.Drawing.Size(762, 399);
+            this.tabPageGetOneSubscription.TabIndex = 1;
+            this.tabPageGetOneSubscription.Text = "Отримати за ID";
+            this.tabPageGetOneSubscription.UseVisualStyleBackColor = true;
+            // 
+            // txtSubStatusResult
+            // 
+            this.txtSubStatusResult.Location = new System.Drawing.Point(19, 214);
+            this.txtSubStatusResult.Name = "txtSubStatusResult";
+            this.txtSubStatusResult.ReadOnly = true;
+            this.txtSubStatusResult.Size = new System.Drawing.Size(300, 23);
+            this.txtSubStatusResult.TabIndex = 12;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(19, 196);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(45, 15);
+            this.label13.TabIndex = 11;
+            this.label13.Text = "Статус:";
+            // 
+            // txtSubServiceResult
+            // 
+            this.txtSubServiceResult.Location = new System.Drawing.Point(19, 160);
+            this.txtSubServiceResult.Name = "txtSubServiceResult";
+            this.txtSubServiceResult.ReadOnly = true;
+            this.txtSubServiceResult.Size = new System.Drawing.Size(300, 23);
+            this.txtSubServiceResult.TabIndex = 10;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(19, 142);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(46, 15);
+            this.label12.TabIndex = 9;
+            this.label12.Text = "Сервіс:";
+            // 
+            // txtSubOwnerIdResult
+            // 
+            this.txtSubOwnerIdResult.Location = new System.Drawing.Point(19, 106);
+            this.txtSubOwnerIdResult.Name = "txtSubOwnerIdResult";
+            this.txtSubOwnerIdResult.ReadOnly = true;
+            this.txtSubOwnerIdResult.Size = new System.Drawing.Size(300, 23);
+            this.txtSubOwnerIdResult.TabIndex = 8;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(19, 88);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(59, 15);
+            this.label11.TabIndex = 7;
+            this.label11.Text = "Owner ID:";
+            // 
+            // btnGetSubscriptionById
+            // 
+            this.btnGetSubscriptionById.Location = new System.Drawing.Point(325, 33);
+            this.btnGetSubscriptionById.Name = "btnGetSubscriptionById";
+            this.btnGetSubscriptionById.Size = new System.Drawing.Size(75, 23);
+            this.btnGetSubscriptionById.TabIndex = 5;
+            this.btnGetSubscriptionById.Text = "Знайти";
+            this.btnGetSubscriptionById.UseVisualStyleBackColor = true;
+            this.btnGetSubscriptionById.Click += new System.EventHandler(this.btnGetSubscriptionById_Click);
+            // 
+            // txtSubscriptionId
+            // 
+            this.txtSubscriptionId.Location = new System.Drawing.Point(19, 34);
+            this.txtSubscriptionId.Name = "txtSubscriptionId";
+            this.txtSubscriptionId.Size = new System.Drawing.Size(300, 23);
+            this.txtSubscriptionId.TabIndex = 4;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(19, 16);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(99, 15);
+            this.label10.TabIndex = 3;
+            this.label10.Text = "Введіть ID підписки:";
+            // 
+            // tabPageCreateSubscription
+            // 
+            this.tabPageCreateSubscription.Controls.Add(this.btnCreateSubscription);
+            this.tabPageCreateSubscription.Controls.Add(this.txtCreateSubStatus);
+            this.tabPageCreateSubscription.Controls.Add(this.label16);
+            this.tabPageCreateSubscription.Controls.Add(this.txtCreateSubService);
+            this.tabPageCreateSubscription.Controls.Add(this.label15);
+            this.tabPageCreateSubscription.Controls.Add(this.txtCreateSubOwnerId);
+            this.tabPageCreateSubscription.Controls.Add(this.label14);
+            this.tabPageCreateSubscription.Location = new System.Drawing.Point(4, 24);
+            this.tabPageCreateSubscription.Name = "tabPageCreateSubscription";
+            this.tabPageCreateSubscription.Size = new System.Drawing.Size(762, 399);
+            this.tabPageCreateSubscription.TabIndex = 2;
+            this.tabPageCreateSubscription.Text = "Створити";
+            this.tabPageCreateSubscription.UseVisualStyleBackColor = true;
+            // 
+            // btnCreateSubscription
+            // 
+            this.btnCreateSubscription.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnCreateSubscription.Location = new System.Drawing.Point(19, 192);
+            this.btnCreateSubscription.Name = "btnCreateSubscription";
+            this.btnCreateSubscription.Size = new System.Drawing.Size(121, 31);
+            this.btnCreateSubscription.TabIndex = 11;
+            this.btnCreateSubscription.Text = "Створити";
+            this.btnCreateSubscription.UseVisualStyleBackColor = true;
+            this.btnCreateSubscription.Click += new System.EventHandler(this.btnCreateSubscription_Click);
+            // 
+            // txtCreateSubStatus
+            // 
+            this.txtCreateSubStatus.Location = new System.Drawing.Point(19, 147);
+            this.txtCreateSubStatus.Name = "txtCreateSubStatus";
+            this.txtCreateSubStatus.Size = new System.Drawing.Size(300, 23);
+            this.txtCreateSubStatus.TabIndex = 10;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(19, 129);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(199, 15);
+            this.label16.TabIndex = 9;
+            this.label16.Text = "Введіть статус (1 - Expectation, 2 - Active...):";
+            // 
+            // txtCreateSubService
+            // 
+            this.txtCreateSubService.Location = new System.Drawing.Point(19, 93);
+            this.txtCreateSubService.Name = "txtCreateSubService";
+            this.txtCreateSubService.Size = new System.Drawing.Size(300, 23);
+            this.txtCreateSubService.TabIndex = 8;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(19, 75);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(83, 15);
+            this.label15.TabIndex = 7;
+            this.label15.Text = "Введіть сервіс:";
+            // 
+            // txtCreateSubOwnerId
+            // 
+            this.txtCreateSubOwnerId.Location = new System.Drawing.Point(19, 38);
+            this.txtCreateSubOwnerId.Name = "txtCreateSubOwnerId";
+            this.txtCreateSubOwnerId.Size = new System.Drawing.Size(300, 23);
+            this.txtCreateSubOwnerId.TabIndex = 6;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(19, 20);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(96, 15);
+            this.label14.TabIndex = 5;
+            this.label14.Text = "Введіть Owner ID:";
+            // 
+            // tabPageUpdateSubscription
+            // 
+            this.tabPageUpdateSubscription.Location = new System.Drawing.Point(4, 24);
+            this.tabPageUpdateSubscription.Name = "tabPageUpdateSubscription";
+            this.tabPageUpdateSubscription.Size = new System.Drawing.Size(762, 399);
+            this.tabPageUpdateSubscription.TabIndex = 3;
+            this.tabPageUpdateSubscription.Text = "Оновити";
+            this.tabPageUpdateSubscription.UseVisualStyleBackColor = true;
+            // 
+            // tabPageDeleteSubscription
+            // 
+            this.tabPageDeleteSubscription.Location = new System.Drawing.Point(4, 24);
+            this.tabPageDeleteSubscription.Name = "tabPageDeleteSubscription";
+            this.tabPageDeleteSubscription.Size = new System.Drawing.Size(762, 399);
+            this.tabPageDeleteSubscription.TabIndex = 4;
+            this.tabPageDeleteSubscription.Text = "Видалити";
+            this.tabPageDeleteSubscription.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -425,6 +696,14 @@ namespace SubscriptionManager.Client
             this.tabPageUpdatePerson.PerformLayout();
             this.tabPageDeletePerson.ResumeLayout(false);
             this.tabPageDeletePerson.PerformLayout();
+            this.tabPageSubscriptions.ResumeLayout(false);
+            this.tabControlSubscriptionOperations.ResumeLayout(false);
+            this.tabPageGetAllSubscriptions.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAllSubscriptions)).EndInit();
+            this.tabPageGetOneSubscription.ResumeLayout(false);
+            this.tabPageGetOneSubscription.PerformLayout();
+            this.tabPageCreateSubscription.ResumeLayout(false);
+            this.tabPageCreateSubscription.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -432,11 +711,10 @@ namespace SubscriptionManager.Client
         #endregion
 
         private TabControl tabControlMain;
+
+        // --- People ---
         private TabPage tabPagePeople;
         private TabControl tabControlPeopleOperations;
-        private TabPage tabPageSubscriptions;
-
-        // --- Елементи для GET ---
         private TabPage tabPageGetAllPeople;
         private DataGridView dgvAllPeople;
         private Button btnGetAllPeople;
@@ -448,16 +726,12 @@ namespace SubscriptionManager.Client
         private Button btnGetPersonById;
         private TextBox txtPersonId;
         private Label label1;
-
-        // --- Елементи для POST ---
         private TabPage tabPageCreatePerson;
         private Label label4;
         private TextBox txtCreateName;
         private Label label5;
         private TextBox txtCreateEmail;
         private Button btnCreatePerson;
-
-        // --- Елементи для PUT ---
         private TabPage tabPageUpdatePerson;
         private Button btnUpdatePerson;
         private TextBox txtUpdateEmail;
@@ -466,11 +740,38 @@ namespace SubscriptionManager.Client
         private Label label7;
         private TextBox txtUpdateId;
         private Label label8;
-
-        // --- (НОВЕ) Елементи для DELETE ---
         private TabPage tabPageDeletePerson;
         private Button btnDeletePerson;
         private TextBox txtDeleteId;
         private Label label9;
+
+        // --- Subscriptions ---
+        private TabPage tabPageSubscriptions;
+        private TabControl tabControlSubscriptionOperations;
+        private TabPage tabPageGetAllSubscriptions;
+        private DataGridView dgvAllSubscriptions;
+        private Button btnGetAllSubscriptions;
+        private TabPage tabPageGetOneSubscription;
+        private TextBox txtSubStatusResult;
+        private Label label13;
+        private TextBox txtSubServiceResult;
+        private Label label12;
+        private TextBox txtSubOwnerIdResult;
+        private Label label11;
+        private Button btnGetSubscriptionById;
+        private TextBox txtSubscriptionId;
+        private Label label10;
+        private TabPage tabPageUpdateSubscription;
+        private TabPage tabPageDeleteSubscription;
+
+        // --- (НОВЕ) Елементи для Створення Subscription ---
+        private TabPage tabPageCreateSubscription;
+        private Button btnCreateSubscription;
+        private TextBox txtCreateSubStatus;
+        private Label label16;
+        private TextBox txtCreateSubService;
+        private Label label15;
+        private TextBox txtCreateSubOwnerId;
+        private Label label14;
     }
 }
