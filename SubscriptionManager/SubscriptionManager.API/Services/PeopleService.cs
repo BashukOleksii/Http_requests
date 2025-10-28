@@ -1,4 +1,5 @@
-﻿using SubscriptionManager.API.IServices;
+﻿using MongoDB.Driver;
+using SubscriptionManager.API.IServices;
 using SubscriptionManager.Core.Interfaces;
 using SubscriptionManager.Core.Models;
 using System.Xml.Linq;
@@ -14,14 +15,16 @@ namespace SubscriptionManager.API.Services
             _peopleRepository = peopleRepository;
         }
 
-        public Task CreateAsync(PeopleItem element)
-        {
-            throw new NotImplementedException();
-        }
 
-        public Task DeleteAsync(string id)
+        public async Task CreateAsync(PeopleItem element) =>
+            await _peopleRepository.CreateAsync(element);
+        
+        public async Task DeleteAsync(string id)
         {
-            throw new NotImplementedException();
+            if (!await _peopleRepository.IsExist(id))
+                throw new KeyNotFoundException($"Не знайдено користувача за Id {id}");
+
+            await _peopleRepository.DeletAsynce(id);
         }
 
         public async Task<IEnumerable<PeopleItem>> GetAllAsync()
@@ -43,13 +46,15 @@ namespace SubscriptionManager.API.Services
 
             return people;
         }
-
-        public async Task<bool> IsExist(string id) =>
-            await _peopleRepository.GetByIdAsync(id) is not null;
             
-        public Task UpdateAsync(string id, PeopleItem element)
+        public async Task UpdateAsync(string id, PeopleItem element)
         {
-            throw new NotImplementedException();
+            if (!await _peopleRepository.IsExist(id))
+                throw new KeyNotFoundException($"Не знайдено користувача за Id {id}");
+
+            await _peopleRepository.UpdateAsync(id, element);
         }
+
+       
     }
 }

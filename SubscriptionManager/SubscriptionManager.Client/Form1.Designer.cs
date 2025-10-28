@@ -1,4 +1,4 @@
-﻿namespace SubscriptionManager.Client
+namespace SubscriptionManager.Client
 {
     partial class Form1
     {
@@ -209,7 +209,7 @@
         private TabControl tabControlPeopleOperations;
         private TabPage tabPageDeletePerson;
         private TabPage tabPageSubscriptions;
-
+        
         // --- Елементи для PUT ---
         private TabPage tabPageUpdatePerson;
         private Button btnUpdatePerson;
