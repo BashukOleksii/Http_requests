@@ -1,10 +1,10 @@
-﻿using MongoDB.Bson;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace SubscriptionManager.Core.Models
 {
     /// <summary>
-    /// Модель реалізує сповіщення, кі отримує користувач про підписку
+    /// Модель реалізує сповіщення, які отримує користувач про підписку
     /// </summary>
     public class MessageItem
     {
@@ -14,21 +14,25 @@ namespace SubscriptionManager.Core.Models
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string? Id { get; set; }
+
         /// <summary>
         /// Заголовок повідомлення
         /// </summary>
         [BsonElement("title")]
         public string? Title { get; set; }
+
         /// <summary>
-        /// Кому надсилаєься повідомлення
+        /// Кому надсилається повідомлення (ID користувача)
         /// </summary>
         [BsonElement("ownerId")]
+        [BsonRepresentation(BsonType.ObjectId)] 
         public string? OwnerId { get; set; }
+
         /// <summary>
-        /// Індетифікатор підписки
+        /// Ідентифікатор підписки, до якої відноситься повідомлення
         /// </summary>
         [BsonElement("subId")]
+        [BsonRepresentation(BsonType.ObjectId)] 
         public string? SubId { get; set; }
-
     }
 }

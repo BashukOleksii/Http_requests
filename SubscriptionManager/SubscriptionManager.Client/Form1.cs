@@ -159,7 +159,7 @@ namespace SubscriptionManager.Client
                 MessageBox.Show($"Сталася помилка (People): {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        
         private async void btnDeletePerson_Click(object sender, EventArgs e)
         {
             string id = txtDeleteId.Text.Trim();
@@ -280,8 +280,8 @@ namespace SubscriptionManager.Client
 
             if (!int.TryParse(statusStr, out int statusInt) || !Enum.IsDefined(typeof(SubStatus), statusInt))
             {
-                MessageBox.Show("Невірний формат статусу. Введіть число (напр., 1 = Expectation, 2 = Active).", "Помилка валідації", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                 MessageBox.Show("Невірний формат статусу. Введіть число (напр., 1 = Expectation, 2 = Active).", "Помилка валідації", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                 return;
             }
 
             var newSub = new SubscriptionItem
@@ -480,7 +480,7 @@ namespace SubscriptionManager.Client
             }
         }
 
-        // Тут будуть інші обробники для Messages (POST, PUT, DELETE)...
+        // POST, PUT, DELETE для Messages будуть додані пізніше
 
         #endregion
     }
