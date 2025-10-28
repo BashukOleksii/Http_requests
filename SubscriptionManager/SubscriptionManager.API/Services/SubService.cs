@@ -46,6 +46,7 @@ namespace SubscriptionManager.API.Services
 
         public async Task<SubscriptionItem> GetByIdAsync(string id)
         {
+
             var sub = await _subRepository.GetByIdAsync(id);
 
             if (sub is null)
