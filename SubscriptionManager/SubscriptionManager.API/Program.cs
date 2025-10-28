@@ -13,7 +13,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers().AddFluentValidation();
 
 builder.Services.AddScoped<IPeopleRepository, PeopleRepository>();
+builder.Services.AddScoped<ISubRepository, SubRepository>();
+
 builder.Services.AddScoped<IPeopleService, PeopleService>();
+builder.Services.AddScoped<ISubService, SubService>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -25,6 +28,7 @@ builder.Services.AddSwaggerGen(oprions =>
 });
 
 builder.Services.AddValidatorsFromAssemblyContaining<PeopleValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<SubscriptioValidator>();
 
 var app = builder.Build();
 
