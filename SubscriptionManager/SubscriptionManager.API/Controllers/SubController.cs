@@ -11,9 +11,10 @@ namespace SubscriptionManager.API.Controllers
     {
         private readonly ISubService _subService;
 
-        public SubController(ISubService subService)
+
+        public SubController(ISubService subservice)
         {
-            _subService = subService;
+            _subService = subservice;
         }
 
         [HttpGet]
@@ -45,7 +46,6 @@ namespace SubscriptionManager.API.Controllers
         }
 
         [HttpPost]
-
         public async Task<IActionResult> Create(SubscriptionItem item) 
         {
             try

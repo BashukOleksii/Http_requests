@@ -6,6 +6,7 @@ namespace SubscriptionManager.API.Services
 {
     public class SubService : ISubService
     {
+
         private readonly IPeopleRepository _peopleRepository;
         private readonly ISubRepository _subRepository;
 
@@ -23,7 +24,6 @@ namespace SubscriptionManager.API.Services
 
             await _subRepository.CreateAsync(element);
         }
-        
 
         public Task DeleteAsync(string id)
         {
@@ -50,7 +50,7 @@ namespace SubscriptionManager.API.Services
 
             return sub;
         }
-        
+       
 
         public Task UpdateAsync(string id, SubscriptionItem element)
         {
