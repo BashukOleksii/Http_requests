@@ -480,7 +480,150 @@ namespace SubscriptionManager.Client
             }
         }
 
-        // POST, PUT, DELETE для Messages будуть додані пізніше
+        private async void btnCreateMessage_Click(object sender, EventArgs e)
+        {
+            string title = txtCreateMsgTitle.Text.Trim();
+            string ownerId = txtCreateMsgOwnerId.Text.Trim();
+            string subId = txtCreateMsgSubId.Text.Trim();
+
+            if (string.IsNullOrEmpty(title) || string.IsNullOrEmpty(ownerId) || string.IsNullOrEmpty(subId))
+            {
+                MessageBox.Show("Заголовок, Owner ID та Sub ID не можуть бути порожніми.", "Помилка валідації", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var newMessage = new MessageItem
+            {
+                Title = title,
+                OwnerId = ownerId,
+                SubId = subId
+            };
+
+            try
+            {
+                var response = await _httpClient.PostAsJsonAsync("api/Messages", newMessage, _jsonOptions);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var createdMessage = await response.Content.ReadFromJsonAsync<MessageItem>(_jsonOptions);
+                    MessageBox.Show($"Повідомлення успішно створено!\nID: {createdMessage?.Id}\nЗаголовок: {createdMessage?.Title}", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    txtCreateMsgTitle.Text = "";
+                    txtCreateMsgOwnerId.Text = "";
+                    txtCreateMsgSubId.Text = "";
+                }
+                else
+                {
+                    string errorContent = await response.Content.ReadAsStringAsync();
+                    MessageBox.Show($"Помилка сервера (Messages): {response.StatusCode}\n{errorContent}", "Помилка сервера", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Сталася помилка (Messages): {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private async void btnUpdateMessage_Click(object sender, EventArgs e)
+        {
+            string id = txtUpdateMsgId.Text.Trim();
+            string title = txtUpdateMsgTitle.Text.Trim();
+            string ownerId = txtUpdateMsgOwnerId.Text.Trim();
+            string subId = txtUpdateMsgSubId.Text.Trim();
+
+            if (string.IsNullOrEmpty(id) || string.IsNullOrEmpty(title) || string.IsNullOrEmpty(ownerId) || string.IsNullOrEmpty(subId))
+            {
+                MessageBox.Show("ID, Заголовок, Owner ID та Sub ID не можуть бути порожніми.", "Помилка валідації", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var updatedMessage = new MessageItem
+            {
+                Id = id,
+                Title = title,
+                OwnerId = ownerId,
+                SubId = subId
+            };
+
+            try
+            {
+                var response = await _httpClient.PutAsJsonAsync($"api/Messages/{id}", updatedMessage, _jsonOptions);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show($"Повідомлення з ID: {id} успішно оновлено!", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    txtUpdateMsgId.Text = "";
+                    txtUpdateMsgTitle.Text = "";
+                    txtUpdateMsgOwnerId.Text = "";
+                    txtUpdateMsgSubId.Text = "";
+                }
+                else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    MessageBox.Show($"Повідомлення з ID '{id}' не знайдено.", "Не знайдено", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    string errorContent = await response.Content.ReadAsStringAsync();
+                    MessageBox.Show($"Помилка сервера (Messages): {response.StatusCode}\n{errorContent}", "Помилка сервера", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Сталася помилка (Messages): {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // --- (НОВЕ) Обробник DELETE (Видалення Message) ---
+        private async void btnDeleteMessage_Click(object sender, EventArgs e)
+        {
+            // 1. Збираємо дані
+            string id = txtDeleteMsgId.Text.Trim();
+
+            // 2. Валідація
+            if (string.IsNullOrEmpty(id))
+            {
+                MessageBox.Show("Будь ласка, введіть ID.", "Помилка валідації", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // 3. Підтвердження
+            var confirmResult = MessageBox.Show($"Ви впевнені, що хочете видалити повідомлення з ID: {id}?",
+                                                 "Підтвердіть видалення",
+                                                 MessageBoxButtons.YesNo,
+                                                 MessageBoxIcon.Warning);
+
+            if (confirmResult == DialogResult.No)
+            {
+                return;
+            }
+
+            try
+            {
+                // 4. Відправляємо DELETE-запит
+                var response = await _httpClient.DeleteAsync($"api/Messages/{id}");
+
+                // 5. Обробляємо відповідь
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show($"Повідомлення з ID: {id} успішно видалено!", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtDeleteMsgId.Text = ""; // Очищуємо поле
+                }
+                else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    MessageBox.Show($"Повідомлення з ID '{id}' не знайдено.", "Не знайдено", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    string errorContent = await response.Content.ReadAsStringAsync();
+                    MessageBox.Show($"Помилка сервера (Messages): {response.StatusCode}\n{errorContent}", "Помилка сервера", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Сталася помилка (Messages): {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         #endregion
     }
