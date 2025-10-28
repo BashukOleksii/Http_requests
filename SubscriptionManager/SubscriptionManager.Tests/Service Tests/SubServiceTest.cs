@@ -31,14 +31,14 @@ public class SubServiceTests
     /// Конструктор тестів, який виконує спільне налаштування (Arrange)
     /// для кожного тестового методу.
     /// </summary>
-    public SubServiceTests()
-    {
-        _mockSubRepo = new Mock<ISubRepository>();
-        _mockPeopleRepo = new Mock<IPeopleRepository>(); // Цей мок потрібен для конструктора
+    //public SubServiceTests()
+    //{
+    //    _mockSubRepo = new Mock<ISubRepository>();
+    //    _mockPeopleRepo = new Mock<IPeopleRepository>(); // Цей мок потрібен для конструктора
 
-        // Впроваджуємо обидві фальшиві залежності
-        _service = new SubService(_mockSubRepo.Object, _mockPeopleRepo.Object);
-    }
+    //    // Впроваджуємо обидві фальшиві залежності
+    //    _service = new SubService(_mockSubRepo.Object, _mockPeopleRepo.Object);
+    //}
 
 
     /// <summary>
