@@ -97,6 +97,7 @@ namespace SubscriptionManager.Client
             this.btnDeleteSubscription = new System.Windows.Forms.Button();
             this.txtDeleteSubId = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
+<<<<<<< HEAD
             this.tabPageMessages = new System.Windows.Forms.TabPage();
             this.tabControlMessageOperations = new System.Windows.Forms.TabControl();
             this.tabPageGetAllMessages = new System.Windows.Forms.TabPage();
@@ -115,6 +116,8 @@ namespace SubscriptionManager.Client
             this.tabPageCreateMessage = new System.Windows.Forms.TabPage();
             this.tabPageUpdateMessage = new System.Windows.Forms.TabPage();
             this.tabPageDeleteMessage = new System.Windows.Forms.TabPage();
+=======
+>>>>>>> 39c3fe591a85e16dfae1024317d2405455401b36
             this.tabControlMain.SuspendLayout();
             this.tabPagePeople.SuspendLayout();
             this.tabControlPeopleOperations.SuspendLayout();
@@ -132,11 +135,14 @@ namespace SubscriptionManager.Client
             this.tabPageCreateSubscription.SuspendLayout();
             this.tabPageUpdateSubscription.SuspendLayout();
             this.tabPageDeleteSubscription.SuspendLayout();
+<<<<<<< HEAD
             this.tabPageMessages.SuspendLayout();
             this.tabControlMessageOperations.SuspendLayout();
             this.tabPageGetAllMessages.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllMessages)).BeginInit();
             this.tabPageGetOneMessage.SuspendLayout();
+=======
+>>>>>>> 39c3fe591a85e16dfae1024317d2405455401b36
             this.SuspendLayout();
             // 
             // tabControlMain
@@ -192,8 +198,8 @@ namespace SubscriptionManager.Client
             // 
             this.dgvAllPeople.AllowUserToAddRows = false;
             this.dgvAllPeople.AllowUserToDeleteRows = false;
-            this.dgvAllPeople.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.dgvAllPeople.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvAllPeople.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAllPeople.Location = new System.Drawing.Point(6, 41);
@@ -503,8 +509,13 @@ namespace SubscriptionManager.Client
             // 
             this.dgvAllSubscriptions.AllowUserToAddRows = false;
             this.dgvAllSubscriptions.AllowUserToDeleteRows = false;
+<<<<<<< HEAD
             this.dgvAllSubscriptions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)
+=======
+            this.dgvAllSubscriptions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+>>>>>>> 39c3fe591a85e16dfae1024317d2405455401b36
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvAllSubscriptions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAllSubscriptions.Location = new System.Drawing.Point(6, 41);
@@ -828,6 +839,7 @@ namespace SubscriptionManager.Client
             this.label21.TabIndex = 3;
             this.label21.Text = "Введіть ID для видалення:";
             // 
+<<<<<<< HEAD
             // tabPageMessages
             // 
             this.tabPageMessages.Controls.Add(this.tabControlMessageOperations);
@@ -1013,6 +1025,8 @@ namespace SubscriptionManager.Client
             this.tabPageDeleteMessage.Text = "Видалити";
             this.tabPageDeleteMessage.UseVisualStyleBackColor = true;
             // 
+=======
+>>>>>>> 39c3fe591a85e16dfae1024317d2405455401b36
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1046,12 +1060,15 @@ namespace SubscriptionManager.Client
             this.tabPageUpdateSubscription.PerformLayout();
             this.tabPageDeleteSubscription.ResumeLayout(false);
             this.tabPageDeleteSubscription.PerformLayout();
+<<<<<<< HEAD
             this.tabPageMessages.ResumeLayout(false);
             this.tabControlMessageOperations.ResumeLayout(false);
             this.tabPageGetAllMessages.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllMessages)).EndInit();
             this.tabPageGetOneMessage.ResumeLayout(false);
             this.tabPageGetOneMessage.PerformLayout();
+=======
+>>>>>>> 39c3fe591a85e16dfae1024317d2405455401b36
             this.ResumeLayout(false);
 
         }
@@ -1059,7 +1076,11 @@ namespace SubscriptionManager.Client
         #endregion
 
         private TabControl tabControlMain;
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 39c3fe591a85e16dfae1024317d2405455401b36
         // --- People ---
         private TabPage tabPagePeople;
         private TabControl tabControlPeopleOperations;
@@ -1127,10 +1148,16 @@ namespace SubscriptionManager.Client
         private Label label19;
         private TextBox txtUpdateSubId;
         private Label label20;
+<<<<<<< HEAD
+=======
+
+        // --- (НОВЕ) Елементи для Видалення Subscription ---
+>>>>>>> 39c3fe591a85e16dfae1024317d2405455401b36
         private TabPage tabPageDeleteSubscription;
         private Button btnDeleteSubscription;
         private TextBox txtDeleteSubId;
         private Label label21;
+<<<<<<< HEAD
 
         // --- (НОВЕ) Messages ---
         private TabPage tabPageMessages;
@@ -1151,5 +1178,7 @@ namespace SubscriptionManager.Client
         private TabPage tabPageCreateMessage;
         private TabPage tabPageUpdateMessage;
         private TabPage tabPageDeleteMessage;
+=======
+>>>>>>> 39c3fe591a85e16dfae1024317d2405455401b36
     }
 }

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using SubscriptionManager.Core.Models; // Цей namespace тепер містить PeopleItem, SubscriptionItem ТА MessageItem
+=======
+using SubscriptionManager.Core.Models;
+>>>>>>> 39c3fe591a85e16dfae1024317d2405455401b36
 using System.Net.Http.Json;
 using System.Text.Json;
 
@@ -159,7 +163,11 @@ namespace SubscriptionManager.Client
                 MessageBox.Show($"Сталася помилка (People): {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 39c3fe591a85e16dfae1024317d2405455401b36
         private async void btnDeletePerson_Click(object sender, EventArgs e)
         {
             string id = txtDeleteId.Text.Trim();
@@ -173,6 +181,7 @@ namespace SubscriptionManager.Client
                                                  "Підтвердіть видалення",
                                                  MessageBoxButtons.YesNo,
                                                  MessageBoxIcon.Warning);
+<<<<<<< HEAD
             if (confirmResult == DialogResult.No)
             {
                 return;
@@ -386,6 +395,8 @@ namespace SubscriptionManager.Client
                                                  MessageBoxButtons.YesNo,
                                                  MessageBoxIcon.Warning);
 
+=======
+>>>>>>> 39c3fe591a85e16dfae1024317d2405455401b36
             if (confirmResult == DialogResult.No)
             {
                 return;
@@ -393,12 +404,20 @@ namespace SubscriptionManager.Client
 
             try
             {
+<<<<<<< HEAD
                 var response = await _httpClient.DeleteAsync($"api/Subscriptions/{id}");
 
                 if (response.IsSuccessStatusCode)
                 {
                     MessageBox.Show($"Підписку з ID: {id} успішно видалено!", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txtDeleteSubId.Text = "";
+=======
+                var response = await _httpClient.DeleteAsync($"api/People/{id}");
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show($"Користувача з ID: {id} успішно видалено!", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtDeleteId.Text = "";
+>>>>>>> 39c3fe591a85e16dfae1024317d2405455401b36
                 }
                 else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
@@ -418,6 +437,7 @@ namespace SubscriptionManager.Client
 
         #endregion
 
+<<<<<<< HEAD
         // ===============================================
         // === МЕТОДИ ДЛЯ ПОВІДОМЛЕНЬ (MESSAGES) ===
         // ===============================================
@@ -439,10 +459,33 @@ namespace SubscriptionManager.Client
                 else
                 {
                     MessageBox.Show("Список повідомлень порожній.", "Інформація", MessageBoxButtons.OK, MessageBoxIcon.Information);
+=======
+        // ==================================================
+        // === МЕТОДИ ДЛЯ ПІДПИСОК (SUBSCRIPTIONS) ===
+        // ==================================================
+
+        #region Subscription Handlers
+
+        private async void btnGetAllSubscriptions_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                dgvAllSubscriptions.DataSource = null;
+                var subList = await _httpClient.GetFromJsonAsync<List<SubscriptionItem>>("api/Subscriptions", _jsonOptions);
+
+                if (subList != null && subList.Any())
+                {
+                    dgvAllSubscriptions.DataSource = subList;
+                }
+                else
+                {
+                    MessageBox.Show("Список підписок порожній.", "Інформація", MessageBoxButtons.OK, MessageBoxIcon.Information);
+>>>>>>> 39c3fe591a85e16dfae1024317d2405455401b36
                 }
             }
             catch (Exception ex)
             {
+<<<<<<< HEAD
                 MessageBox.Show($"Помилка при отриманні даних (Messages): {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -450,6 +493,15 @@ namespace SubscriptionManager.Client
         private async void btnGetMessageById_Click(object sender, EventArgs e)
         {
             string id = txtMessageId.Text.Trim();
+=======
+                MessageBox.Show($"Помилка при отриманні даних: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private async void btnGetSubscriptionById_Click(object sender, EventArgs e)
+        {
+            string id = txtSubscriptionId.Text.Trim();
+>>>>>>> 39c3fe591a85e16dfae1024317d2405455401b36
             if (string.IsNullOrEmpty(id))
             {
                 MessageBox.Show("Будь ласка, введіть ID.", "Попередження", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -458,6 +510,7 @@ namespace SubscriptionManager.Client
 
             try
             {
+<<<<<<< HEAD
                 txtMsgTitleResult.Text = "";
                 txtMsgOwnerIdResult.Text = "";
                 txtMsgSubIdResult.Text = "";
@@ -470,15 +523,193 @@ namespace SubscriptionManager.Client
                     txtMsgTitleResult.Text = message.Title;
                     txtMsgOwnerIdResult.Text = message.OwnerId;
                     txtMsgSubIdResult.Text = message.SubId;
+=======
+                txtSubOwnerIdResult.Text = "";
+                txtSubServiceResult.Text = "";
+                txtSubStatusResult.Text = "";
+
+                var sub = await _httpClient.GetFromJsonAsync<SubscriptionItem>($"api/Subscriptions/{id}", _jsonOptions);
+
+                if (sub != null)
+                {
+                    txtSubOwnerIdResult.Text = sub.OwnerId;
+                    txtSubServiceResult.Text = sub.Service;
+                    txtSubStatusResult.Text = sub.Status.ToString();
+>>>>>>> 39c3fe591a85e16dfae1024317d2405455401b36
                 }
             }
             catch (HttpRequestException httpEx) when (httpEx.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
+<<<<<<< HEAD
                 MessageBox.Show($"Повідомлення з ID '{id}' не знайдено.", "Не знайдено", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Помилка при отриманні даних (Messages): {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+=======
+                MessageBox.Show($"Підписку з ID '{id}' не знайдено.", "Не знайдено", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Помилка при отриманні даних: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private async void btnCreateSubscription_Click(object sender, EventArgs e)
+        {
+            string ownerId = txtCreateSubOwnerId.Text.Trim();
+            string service = txtCreateSubService.Text.Trim();
+            string statusStr = txtCreateSubStatus.Text.Trim();
+
+            if (string.IsNullOrEmpty(ownerId) || string.IsNullOrEmpty(service) || string.IsNullOrEmpty(statusStr))
+            {
+                MessageBox.Show("Owner ID, Сервіс та Статус не можуть бути порожніми.", "Помилка валідації", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!int.TryParse(statusStr, out int statusInt) || !Enum.IsDefined(typeof(SubStatus), statusInt))
+            {
+                 MessageBox.Show("Невірний формат статусу. Введіть число (напр., 1 = Expectation, 2 = Active).", "Помилка валідації", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                 return;
+            }
+
+            var newSub = new SubscriptionItem
+            {
+                OwnerId = ownerId,
+                Service = service,
+                Status = (SubStatus)statusInt
+            };
+
+            try
+            {
+                var response = await _httpClient.PostAsJsonAsync("api/Subscriptions", newSub, _jsonOptions);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var createdSub = await response.Content.ReadFromJsonAsync<SubscriptionItem>(_jsonOptions);
+                    MessageBox.Show($"Підписку успішно створено!\nID: {createdSub?.Id}\nСервіс: {createdSub?.Service}", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    txtCreateSubOwnerId.Text = "";
+                    txtCreateSubService.Text = "";
+                    txtCreateSubStatus.Text = "";
+                }
+                else
+                {
+                    string errorContent = await response.Content.ReadAsStringAsync();
+                    MessageBox.Show($"Помилка: {response.StatusCode}\n{errorContent}", "Помилка сервера", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Сталася помилка: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private async void btnUpdateSubscription_Click(object sender, EventArgs e)
+        {
+            string id = txtUpdateSubId.Text.Trim();
+            string ownerId = txtUpdateSubOwnerId.Text.Trim();
+            string service = txtUpdateSubService.Text.Trim();
+            string statusStr = txtUpdateSubStatus.Text.Trim();
+
+            if (string.IsNullOrEmpty(id) || string.IsNullOrEmpty(ownerId) || string.IsNullOrEmpty(service) || string.IsNullOrEmpty(statusStr))
+            {
+                MessageBox.Show("ID, Owner ID, Сервіс та Статус не можуть бути порожніми.", "Помилка валідації", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!int.TryParse(statusStr, out int statusInt) || !Enum.IsDefined(typeof(SubStatus), statusInt))
+            {
+                MessageBox.Show("Невірний формат статусу. Введіть число (напр., 1 = Expectation, 2 = Active).", "Помилка валідації", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var updatedSub = new SubscriptionItem
+            {
+                Id = id,
+                OwnerId = ownerId,
+                Service = service,
+                Status = (SubStatus)statusInt
+            };
+
+            try
+            {
+                var response = await _httpClient.PutAsJsonAsync($"api/Subscriptions/{id}", updatedSub, _jsonOptions);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show($"Підписку з ID: {id} успішно оновлено!", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    txtUpdateSubId.Text = "";
+                    txtUpdateSubOwnerId.Text = "";
+                    txtUpdateSubService.Text = "";
+                    txtUpdateSubStatus.Text = "";
+                }
+                else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    MessageBox.Show($"Підписку з ID '{id}' не знайдено.", "Не знайдено", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    string errorContent = await response.Content.ReadAsStringAsync();
+                    MessageBox.Show($"Помилка: {response.StatusCode}\n{errorContent}", "Помилка сервера", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Сталася помилка: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // --- (НОВЕ) Обробник DELETE (Видалення Subscription) ---
+        private async void btnDeleteSubscription_Click(object sender, EventArgs e)
+        {
+            // 1. Збираємо дані
+            string id = txtDeleteSubId.Text.Trim();
+
+            // 2. Валідація
+            if (string.IsNullOrEmpty(id))
+            {
+                MessageBox.Show("Будь ласка, введіть ID.", "Помилка валідації", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // 3. Підтвердження
+            var confirmResult = MessageBox.Show($"Ви впевнені, що хочете видалити підписку з ID: {id}?",
+                                                 "Підтвердіть видалення",
+                                                 MessageBoxButtons.YesNo,
+                                                 MessageBoxIcon.Warning);
+
+            if (confirmResult == DialogResult.No)
+            {
+                return;
+            }
+
+            try
+            {
+                // 4. Відправляємо DELETE-запит
+                var response = await _httpClient.DeleteAsync($"api/Subscriptions/{id}");
+
+                // 5. Обробляємо відповідь
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show($"Підписку з ID: {id} успішно видалено!", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtDeleteSubId.Text = ""; // Очищуємо поле
+                }
+                else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    MessageBox.Show($"Підписку з ID '{id}' не знайдено.", "Не знайдено", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    string errorContent = await response.Content.ReadAsStringAsync();
+                    MessageBox.Show($"Помилка: {response.StatusCode}\n{errorContent}", "Помилка сервера", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Сталася помилка: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+>>>>>>> 39c3fe591a85e16dfae1024317d2405455401b36
             }
         }
 
