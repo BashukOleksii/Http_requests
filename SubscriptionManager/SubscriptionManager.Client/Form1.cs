@@ -243,7 +243,6 @@ namespace SubscriptionManager.Client
 
             try
             {
-                // Очищуємо поля результату
                 txtSubOwnerIdResult.Text = "";
                 txtSubServiceResult.Text = "";
                 txtSubStatusResult.Text = "";
@@ -252,10 +251,9 @@ namespace SubscriptionManager.Client
 
                 if (sub != null)
                 {
-                    // Заповнюємо поля відповідно до твоєї моделі
                     txtSubOwnerIdResult.Text = sub.OwnerId;
                     txtSubServiceResult.Text = sub.Service;
-                    txtSubStatusResult.Text = sub.Status.ToString(); // Конвертуємо enum в рядок
+                    txtSubStatusResult.Text = sub.Status.ToString();
                 }
             }
             catch (HttpRequestException httpEx) when (httpEx.StatusCode == System.Net.HttpStatusCode.NotFound)
@@ -268,15 +266,12 @@ namespace SubscriptionManager.Client
             }
         }
 
-        // --- (НОВЕ) Обробник POST (Створення Subscription) ---
         private async void btnCreateSubscription_Click(object sender, EventArgs e)
         {
-            // 1. Збираємо дані
             string ownerId = txtCreateSubOwnerId.Text.Trim();
             string service = txtCreateSubService.Text.Trim();
             string statusStr = txtCreateSubStatus.Text.Trim();
 
-            // 2. Валідація
             if (string.IsNullOrEmpty(ownerId) || string.IsNullOrEmpty(service) || string.IsNullOrEmpty(statusStr))
             {
                 MessageBox.Show("Owner ID, Сервіс та Статус не можуть бути порожніми.", "Помилка валідації", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -289,29 +284,88 @@ namespace SubscriptionManager.Client
                  return;
             }
 
-            // 3. Створюємо об'єкт
             var newSub = new SubscriptionItem
             {
                 OwnerId = ownerId,
                 Service = service,
-                Status = (SubStatus)statusInt // Приводимо int до enum
+                Status = (SubStatus)statusInt
             };
 
             try
             {
-                // 4. Відправляємо POST-запит
                 var response = await _httpClient.PostAsJsonAsync("api/Subscriptions", newSub, _jsonOptions);
 
-                // 5. Обробляємо відповідь
                 if (response.IsSuccessStatusCode)
                 {
                     var createdSub = await response.Content.ReadFromJsonAsync<SubscriptionItem>(_jsonOptions);
                     MessageBox.Show($"Підписку успішно створено!\nID: {createdSub?.Id}\nСервіс: {createdSub?.Service}", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // Очищуємо поля
                     txtCreateSubOwnerId.Text = "";
                     txtCreateSubService.Text = "";
                     txtCreateSubStatus.Text = "";
+                }
+                else
+                {
+                    string errorContent = await response.Content.ReadAsStringAsync();
+                    MessageBox.Show($"Помилка: {response.StatusCode}\n{errorContent}", "Помилка сервера", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Сталася помилка: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // --- (НОВЕ) Обробник PUT (Оновлення Subscription) ---
+        private async void btnUpdateSubscription_Click(object sender, EventArgs e)
+        {
+            // 1. Збираємо дані
+            string id = txtUpdateSubId.Text.Trim();
+            string ownerId = txtUpdateSubOwnerId.Text.Trim();
+            string service = txtUpdateSubService.Text.Trim();
+            string statusStr = txtUpdateSubStatus.Text.Trim();
+
+            // 2. Валідація
+            if (string.IsNullOrEmpty(id) || string.IsNullOrEmpty(ownerId) || string.IsNullOrEmpty(service) || string.IsNullOrEmpty(statusStr))
+            {
+                MessageBox.Show("ID, Owner ID, Сервіс та Статус не можуть бути порожніми.", "Помилка валідації", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!int.TryParse(statusStr, out int statusInt) || !Enum.IsDefined(typeof(SubStatus), statusInt))
+            {
+                MessageBox.Show("Невірний формат статусу. Введіть число (напр., 1 = Expectation, 2 = Active).", "Помилка валідації", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // 3. Створюємо об'єкт
+            var updatedSub = new SubscriptionItem
+            {
+                Id = id,
+                OwnerId = ownerId,
+                Service = service,
+                Status = (SubStatus)statusInt
+            };
+
+            try
+            {
+                // 4. Відправляємо PUT-запит
+                var response = await _httpClient.PutAsJsonAsync($"api/Subscriptions/{id}", updatedSub, _jsonOptions);
+
+                // 5. Обробляємо відповідь
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show($"Підписку з ID: {id} успішно оновлено!", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Очищуємо поля
+                    txtUpdateSubId.Text = "";
+                    txtUpdateSubOwnerId.Text = "";
+                    txtUpdateSubService.Text = "";
+                    txtUpdateSubStatus.Text = "";
+                }
+                else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    MessageBox.Show($"Підписку з ID '{id}' не знайдено.", "Не знайдено", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {

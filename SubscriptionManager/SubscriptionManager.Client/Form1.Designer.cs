@@ -84,6 +84,15 @@ namespace SubscriptionManager.Client
             this.txtCreateSubOwnerId = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.tabPageUpdateSubscription = new System.Windows.Forms.TabPage();
+            this.btnUpdateSubscription = new System.Windows.Forms.Button();
+            this.txtUpdateSubStatus = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txtUpdateSubService = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.txtUpdateSubOwnerId = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.txtUpdateSubId = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
             this.tabPageDeleteSubscription = new System.Windows.Forms.TabPage();
             this.tabControlMain.SuspendLayout();
             this.tabPagePeople.SuspendLayout();
@@ -100,6 +109,7 @@ namespace SubscriptionManager.Client
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllSubscriptions)).BeginInit();
             this.tabPageGetOneSubscription.SuspendLayout();
             this.tabPageCreateSubscription.SuspendLayout();
+            this.tabPageUpdateSubscription.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlMain
@@ -659,12 +669,96 @@ namespace SubscriptionManager.Client
             // 
             // tabPageUpdateSubscription
             // 
+            this.tabPageUpdateSubscription.Controls.Add(this.btnUpdateSubscription);
+            this.tabPageUpdateSubscription.Controls.Add(this.txtUpdateSubStatus);
+            this.tabPageUpdateSubscription.Controls.Add(this.label17);
+            this.tabPageUpdateSubscription.Controls.Add(this.txtUpdateSubService);
+            this.tabPageUpdateSubscription.Controls.Add(this.label18);
+            this.tabPageUpdateSubscription.Controls.Add(this.txtUpdateSubOwnerId);
+            this.tabPageUpdateSubscription.Controls.Add(this.label19);
+            this.tabPageUpdateSubscription.Controls.Add(this.txtUpdateSubId);
+            this.tabPageUpdateSubscription.Controls.Add(this.label20);
             this.tabPageUpdateSubscription.Location = new System.Drawing.Point(4, 24);
             this.tabPageUpdateSubscription.Name = "tabPageUpdateSubscription";
             this.tabPageUpdateSubscription.Size = new System.Drawing.Size(762, 399);
             this.tabPageUpdateSubscription.TabIndex = 3;
             this.tabPageUpdateSubscription.Text = "Оновити";
             this.tabPageUpdateSubscription.UseVisualStyleBackColor = true;
+            // 
+            // btnUpdateSubscription
+            // 
+            this.btnUpdateSubscription.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnUpdateSubscription.Location = new System.Drawing.Point(19, 248);
+            this.btnUpdateSubscription.Name = "btnUpdateSubscription";
+            this.btnUpdateSubscription.Size = new System.Drawing.Size(121, 31);
+            this.btnUpdateSubscription.TabIndex = 15;
+            this.btnUpdateSubscription.Text = "Оновити";
+            this.btnUpdateSubscription.UseVisualStyleBackColor = true;
+            this.btnUpdateSubscription.Click += new System.EventHandler(this.btnUpdateSubscription_Click);
+            // 
+            // txtUpdateSubStatus
+            // 
+            this.txtUpdateSubStatus.Location = new System.Drawing.Point(19, 203);
+            this.txtUpdateSubStatus.Name = "txtUpdateSubStatus";
+            this.txtUpdateSubStatus.Size = new System.Drawing.Size(300, 23);
+            this.txtUpdateSubStatus.TabIndex = 14;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(19, 185);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(217, 15);
+            this.label17.TabIndex = 13;
+            this.label17.Text = "Введіть новий статус (1 - Expectation...):";
+            // 
+            // txtUpdateSubService
+            // 
+            this.txtUpdateSubService.Location = new System.Drawing.Point(19, 149);
+            this.txtUpdateSubService.Name = "txtUpdateSubService";
+            this.txtUpdateSubService.Size = new System.Drawing.Size(300, 23);
+            this.txtUpdateSubService.TabIndex = 12;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(19, 131);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(117, 15);
+            this.label18.TabIndex = 11;
+            this.label18.Text = "Введіть новий сервіс:";
+            // 
+            // txtUpdateSubOwnerId
+            // 
+            this.txtUpdateSubOwnerId.Location = new System.Drawing.Point(19, 95);
+            this.txtUpdateSubOwnerId.Name = "txtUpdateSubOwnerId";
+            this.txtUpdateSubOwnerId.Size = new System.Drawing.Size(300, 23);
+            this.txtUpdateSubOwnerId.TabIndex = 10;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(19, 77);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(130, 15);
+            this.label19.TabIndex = 9;
+            this.label19.Text = "Введіть новий Owner ID:";
+            // 
+            // txtUpdateSubId
+            // 
+            this.txtUpdateSubId.Location = new System.Drawing.Point(19, 38);
+            this.txtUpdateSubId.Name = "txtUpdateSubId";
+            this.txtUpdateSubId.Size = new System.Drawing.Size(300, 23);
+            this.txtUpdateSubId.TabIndex = 8;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(19, 20);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(147, 15);
+            this.label20.TabIndex = 7;
+            this.label20.Text = "Введіть ID для оновлення:";
             // 
             // tabPageDeleteSubscription
             // 
@@ -704,6 +798,8 @@ namespace SubscriptionManager.Client
             this.tabPageGetOneSubscription.PerformLayout();
             this.tabPageCreateSubscription.ResumeLayout(false);
             this.tabPageCreateSubscription.PerformLayout();
+            this.tabPageUpdateSubscription.ResumeLayout(false);
+            this.tabPageUpdateSubscription.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -761,10 +857,6 @@ namespace SubscriptionManager.Client
         private Button btnGetSubscriptionById;
         private TextBox txtSubscriptionId;
         private Label label10;
-        private TabPage tabPageUpdateSubscription;
-        private TabPage tabPageDeleteSubscription;
-
-        // --- (НОВЕ) Елементи для Створення Subscription ---
         private TabPage tabPageCreateSubscription;
         private Button btnCreateSubscription;
         private TextBox txtCreateSubStatus;
@@ -773,5 +865,18 @@ namespace SubscriptionManager.Client
         private Label label15;
         private TextBox txtCreateSubOwnerId;
         private Label label14;
+        private TabPage tabPageDeleteSubscription;
+
+        // --- (НОВЕ) Елементи для Оновлення Subscription ---
+        private TabPage tabPageUpdateSubscription;
+        private Button btnUpdateSubscription;
+        private TextBox txtUpdateSubStatus;
+        private Label label17;
+        private TextBox txtUpdateSubService;
+        private Label label18;
+        private TextBox txtUpdateSubOwnerId;
+        private Label label19;
+        private TextBox txtUpdateSubId;
+        private Label label20;
     }
 }
