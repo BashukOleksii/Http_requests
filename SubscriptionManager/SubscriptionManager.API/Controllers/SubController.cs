@@ -22,6 +22,7 @@ namespace SubscriptionManager.API.Controllers
             try
             {
                 var subs = await _subService.GetAllAsync();
+
                 return Ok(subs);
             }
             catch (KeyNotFoundException kex)
