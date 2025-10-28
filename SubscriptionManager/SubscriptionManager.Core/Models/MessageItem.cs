@@ -1,4 +1,4 @@
-﻿using MongoDB.Bson;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace SubscriptionManager.Core.Models
@@ -25,14 +25,14 @@ namespace SubscriptionManager.Core.Models
         /// Кому надсилається повідомлення (ID користувача)
         /// </summary>
         [BsonElement("ownerId")]
-        [BsonRepresentation(BsonType.ObjectId)]
+        [BsonRepresentation(BsonType.ObjectId)] 
         public string? OwnerId { get; set; }
 
         /// <summary>
         /// Ідентифікатор підписки, до якої відноситься повідомлення
         /// </summary>
         [BsonElement("subId")]
-        [BsonRepresentation(BsonType.ObjectId)]
+        [BsonRepresentation(BsonType.ObjectId)] 
         public string? SubId { get; set; }
     }
 }
