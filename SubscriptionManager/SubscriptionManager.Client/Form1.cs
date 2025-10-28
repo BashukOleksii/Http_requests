@@ -1,4 +1,4 @@
-using SubscriptionManager.Core.Models; // Цей namespace тепер містить PeopleItem, SubscriptionItem ТА MessageItem
+using SubscriptionManager.Core.Models; // Namespace для PeopleItem, SubscriptionItem, MessageItem
 using System.Net.Http.Json;
 using System.Text.Json;
 
@@ -159,7 +159,7 @@ namespace SubscriptionManager.Client
                 MessageBox.Show($"Сталася помилка (People): {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        
         private async void btnDeletePerson_Click(object sender, EventArgs e)
         {
             string id = txtDeleteId.Text.Trim();
@@ -280,8 +280,8 @@ namespace SubscriptionManager.Client
 
             if (!int.TryParse(statusStr, out int statusInt) || !Enum.IsDefined(typeof(SubStatus), statusInt))
             {
-                MessageBox.Show("Невірний формат статусу. Введіть число (напр., 1 = Expectation, 2 = Active).", "Помилка валідації", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                 MessageBox.Show("Невірний формат статусу. Введіть число (напр., 1 = Expectation, 2 = Active).", "Помилка валідації", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                 return;
             }
 
             var newSub = new SubscriptionItem
@@ -429,7 +429,6 @@ namespace SubscriptionManager.Client
             try
             {
                 dgvAllMessages.DataSource = null;
-                // Тепер використовуємо MessageItem з SubscriptionManager.Core.Models
                 var messageList = await _httpClient.GetFromJsonAsync<List<MessageItem>>("api/Messages", _jsonOptions);
 
                 if (messageList != null && messageList.Any())
@@ -462,7 +461,6 @@ namespace SubscriptionManager.Client
                 txtMsgOwnerIdResult.Text = "";
                 txtMsgSubIdResult.Text = "";
 
-                // Тепер використовуємо MessageItem з SubscriptionManager.Core.Models
                 var message = await _httpClient.GetFromJsonAsync<MessageItem>($"api/Messages/{id}", _jsonOptions);
 
                 if (message != null)
@@ -481,6 +479,58 @@ namespace SubscriptionManager.Client
                 MessageBox.Show($"Помилка при отриманні даних (Messages): {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private async void btnCreateMessage_Click(object sender, EventArgs e)
+        {
+            // 1. Збираємо дані
+            string title = txtCreateMsgTitle.Text.Trim();
+            string ownerId = txtCreateMsgOwnerId.Text.Trim();
+            string subId = txtCreateMsgSubId.Text.Trim();
+
+            // 2. Валідація
+            if (string.IsNullOrEmpty(title) || string.IsNullOrEmpty(ownerId) || string.IsNullOrEmpty(subId))
+            {
+                MessageBox.Show("Заголовок, Owner ID та Sub ID не можуть бути порожніми.", "Помилка валідації", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // 3. Створюємо об'єкт
+            var newMessage = new MessageItem
+            {
+                Title = title,
+                OwnerId = ownerId,
+                SubId = subId
+            };
+
+            try
+            {
+                // 4. Відправляємо POST-запит
+                var response = await _httpClient.PostAsJsonAsync("api/Messages", newMessage, _jsonOptions);
+
+                // 5. Обробляємо відповідь
+                if (response.IsSuccessStatusCode)
+                {
+                    var createdMessage = await response.Content.ReadFromJsonAsync<MessageItem>(_jsonOptions);
+                    MessageBox.Show($"Повідомлення успішно створено!\nID: {createdMessage?.Id}\nЗаголовок: {createdMessage?.Title}", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Очищуємо поля
+                    txtCreateMsgTitle.Text = "";
+                    txtCreateMsgOwnerId.Text = "";
+                    txtCreateMsgSubId.Text = "";
+                }
+                else
+                {
+                    string errorContent = await response.Content.ReadAsStringAsync();
+                    MessageBox.Show($"Помилка сервера (Messages): {response.StatusCode}\n{errorContent}", "Помилка сервера", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Сталася помилка (Messages): {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Тут будуть інші обробники для Messages (PUT, DELETE)...
 
         #endregion
     }

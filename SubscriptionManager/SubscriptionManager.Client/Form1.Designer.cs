@@ -113,6 +113,13 @@ namespace SubscriptionManager.Client
             this.txtMessageId = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
             this.tabPageCreateMessage = new System.Windows.Forms.TabPage();
+            this.btnCreateMessage = new System.Windows.Forms.Button();
+            this.txtCreateMsgSubId = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.txtCreateMsgOwnerId = new System.Windows.Forms.TextBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.txtCreateMsgTitle = new System.Windows.Forms.TextBox();
+            this.label28 = new System.Windows.Forms.Label();
             this.tabPageUpdateMessage = new System.Windows.Forms.TabPage();
             this.tabPageDeleteMessage = new System.Windows.Forms.TabPage();
             this.tabControlMain.SuspendLayout();
@@ -137,6 +144,7 @@ namespace SubscriptionManager.Client
             this.tabPageGetAllMessages.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllMessages)).BeginInit();
             this.tabPageGetOneMessage.SuspendLayout();
+            this.tabPageCreateMessage.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlMain
@@ -192,8 +200,8 @@ namespace SubscriptionManager.Client
             // 
             this.dgvAllPeople.AllowUserToAddRows = false;
             this.dgvAllPeople.AllowUserToDeleteRows = false;
-            this.dgvAllPeople.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.dgvAllPeople.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvAllPeople.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAllPeople.Location = new System.Drawing.Point(6, 41);
@@ -503,8 +511,8 @@ namespace SubscriptionManager.Client
             // 
             this.dgvAllSubscriptions.AllowUserToAddRows = false;
             this.dgvAllSubscriptions.AllowUserToDeleteRows = false;
-            this.dgvAllSubscriptions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.dgvAllSubscriptions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvAllSubscriptions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAllSubscriptions.Location = new System.Drawing.Point(6, 41);
@@ -869,8 +877,8 @@ namespace SubscriptionManager.Client
             // 
             this.dgvAllMessages.AllowUserToAddRows = false;
             this.dgvAllMessages.AllowUserToDeleteRows = false;
-            this.dgvAllMessages.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.dgvAllMessages.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvAllMessages.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAllMessages.Location = new System.Drawing.Point(6, 41);
@@ -988,12 +996,78 @@ namespace SubscriptionManager.Client
             // 
             // tabPageCreateMessage
             // 
+            this.tabPageCreateMessage.Controls.Add(this.btnCreateMessage);
+            this.tabPageCreateMessage.Controls.Add(this.txtCreateMsgSubId);
+            this.tabPageCreateMessage.Controls.Add(this.label26);
+            this.tabPageCreateMessage.Controls.Add(this.txtCreateMsgOwnerId);
+            this.tabPageCreateMessage.Controls.Add(this.label27);
+            this.tabPageCreateMessage.Controls.Add(this.txtCreateMsgTitle);
+            this.tabPageCreateMessage.Controls.Add(this.label28);
             this.tabPageCreateMessage.Location = new System.Drawing.Point(4, 24);
             this.tabPageCreateMessage.Name = "tabPageCreateMessage";
             this.tabPageCreateMessage.Size = new System.Drawing.Size(762, 399);
             this.tabPageCreateMessage.TabIndex = 2;
             this.tabPageCreateMessage.Text = "Створити";
             this.tabPageCreateMessage.UseVisualStyleBackColor = true;
+            // 
+            // btnCreateMessage
+            // 
+            this.btnCreateMessage.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnCreateMessage.Location = new System.Drawing.Point(19, 192);
+            this.btnCreateMessage.Name = "btnCreateMessage";
+            this.btnCreateMessage.Size = new System.Drawing.Size(121, 31);
+            this.btnCreateMessage.TabIndex = 18;
+            this.btnCreateMessage.Text = "Створити";
+            this.btnCreateMessage.UseVisualStyleBackColor = true;
+            this.btnCreateMessage.Click += new System.EventHandler(this.btnCreateMessage_Click);
+            // 
+            // txtCreateMsgSubId
+            // 
+            this.txtCreateMsgSubId.Location = new System.Drawing.Point(19, 147);
+            this.txtCreateMsgSubId.Name = "txtCreateMsgSubId";
+            this.txtCreateMsgSubId.Size = new System.Drawing.Size(300, 23);
+            this.txtCreateMsgSubId.TabIndex = 17;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(19, 129);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(80, 15);
+            this.label26.TabIndex = 16;
+            this.label26.Text = "Введіть Sub ID:";
+            // 
+            // txtCreateMsgOwnerId
+            // 
+            this.txtCreateMsgOwnerId.Location = new System.Drawing.Point(19, 93);
+            this.txtCreateMsgOwnerId.Name = "txtCreateMsgOwnerId";
+            this.txtCreateMsgOwnerId.Size = new System.Drawing.Size(300, 23);
+            this.txtCreateMsgOwnerId.TabIndex = 15;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(19, 75);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(96, 15);
+            this.label27.TabIndex = 14;
+            this.label27.Text = "Введіть Owner ID:";
+            // 
+            // txtCreateMsgTitle
+            // 
+            this.txtCreateMsgTitle.Location = new System.Drawing.Point(19, 38);
+            this.txtCreateMsgTitle.Name = "txtCreateMsgTitle";
+            this.txtCreateMsgTitle.Size = new System.Drawing.Size(300, 23);
+            this.txtCreateMsgTitle.TabIndex = 13;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(19, 20);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(101, 15);
+            this.label28.TabIndex = 12;
+            this.label28.Text = "Введіть заголовок:";
             // 
             // tabPageUpdateMessage
             // 
@@ -1052,6 +1126,8 @@ namespace SubscriptionManager.Client
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllMessages)).EndInit();
             this.tabPageGetOneMessage.ResumeLayout(false);
             this.tabPageGetOneMessage.PerformLayout();
+            this.tabPageCreateMessage.ResumeLayout(false);
+            this.tabPageCreateMessage.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1059,7 +1135,7 @@ namespace SubscriptionManager.Client
         #endregion
 
         private TabControl tabControlMain;
-
+        
         // --- People ---
         private TabPage tabPagePeople;
         private TabControl tabControlPeopleOperations;
@@ -1132,7 +1208,7 @@ namespace SubscriptionManager.Client
         private TextBox txtDeleteSubId;
         private Label label21;
 
-        // --- (НОВЕ) Messages ---
+        // --- Messages ---
         private TabPage tabPageMessages;
         private TabControl tabControlMessageOperations;
         private TabPage tabPageGetAllMessages;
@@ -1148,8 +1224,15 @@ namespace SubscriptionManager.Client
         private Button btnGetMessageById;
         private TextBox txtMessageId;
         private Label label25;
-        private TabPage tabPageCreateMessage;
         private TabPage tabPageUpdateMessage;
         private TabPage tabPageDeleteMessage;
+        private TabPage tabPageCreateMessage;
+        private Button btnCreateMessage;
+        private TextBox txtCreateMsgSubId;
+        private Label label26;
+        private TextBox txtCreateMsgOwnerId;
+        private Label label27;
+        private TextBox txtCreateMsgTitle;
+        private Label label28;
     }
 }
