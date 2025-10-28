@@ -316,16 +316,13 @@ namespace SubscriptionManager.Client
             }
         }
 
-        // --- (НОВЕ) Обробник PUT (Оновлення Subscription) ---
         private async void btnUpdateSubscription_Click(object sender, EventArgs e)
         {
-            // 1. Збираємо дані
             string id = txtUpdateSubId.Text.Trim();
             string ownerId = txtUpdateSubOwnerId.Text.Trim();
             string service = txtUpdateSubService.Text.Trim();
             string statusStr = txtUpdateSubStatus.Text.Trim();
 
-            // 2. Валідація
             if (string.IsNullOrEmpty(id) || string.IsNullOrEmpty(ownerId) || string.IsNullOrEmpty(service) || string.IsNullOrEmpty(statusStr))
             {
                 MessageBox.Show("ID, Owner ID, Сервіс та Статус не можуть бути порожніми.", "Помилка валідації", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -338,7 +335,6 @@ namespace SubscriptionManager.Client
                 return;
             }
 
-            // 3. Створюємо об'єкт
             var updatedSub = new SubscriptionItem
             {
                 Id = id,
@@ -349,19 +345,67 @@ namespace SubscriptionManager.Client
 
             try
             {
-                // 4. Відправляємо PUT-запит
                 var response = await _httpClient.PutAsJsonAsync($"api/Subscriptions/{id}", updatedSub, _jsonOptions);
 
-                // 5. Обробляємо відповідь
                 if (response.IsSuccessStatusCode)
                 {
                     MessageBox.Show($"Підписку з ID: {id} успішно оновлено!", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // Очищуємо поля
                     txtUpdateSubId.Text = "";
                     txtUpdateSubOwnerId.Text = "";
                     txtUpdateSubService.Text = "";
                     txtUpdateSubStatus.Text = "";
+                }
+                else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    MessageBox.Show($"Підписку з ID '{id}' не знайдено.", "Не знайдено", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    string errorContent = await response.Content.ReadAsStringAsync();
+                    MessageBox.Show($"Помилка: {response.StatusCode}\n{errorContent}", "Помилка сервера", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Сталася помилка: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // --- (НОВЕ) Обробник DELETE (Видалення Subscription) ---
+        private async void btnDeleteSubscription_Click(object sender, EventArgs e)
+        {
+            // 1. Збираємо дані
+            string id = txtDeleteSubId.Text.Trim();
+
+            // 2. Валідація
+            if (string.IsNullOrEmpty(id))
+            {
+                MessageBox.Show("Будь ласка, введіть ID.", "Помилка валідації", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // 3. Підтвердження
+            var confirmResult = MessageBox.Show($"Ви впевнені, що хочете видалити підписку з ID: {id}?",
+                                                 "Підтвердіть видалення",
+                                                 MessageBoxButtons.YesNo,
+                                                 MessageBoxIcon.Warning);
+
+            if (confirmResult == DialogResult.No)
+            {
+                return;
+            }
+
+            try
+            {
+                // 4. Відправляємо DELETE-запит
+                var response = await _httpClient.DeleteAsync($"api/Subscriptions/{id}");
+
+                // 5. Обробляємо відповідь
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show($"Підписку з ID: {id} успішно видалено!", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtDeleteSubId.Text = ""; // Очищуємо поле
                 }
                 else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {

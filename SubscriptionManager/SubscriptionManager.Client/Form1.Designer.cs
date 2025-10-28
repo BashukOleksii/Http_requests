@@ -94,6 +94,9 @@ namespace SubscriptionManager.Client
             this.txtUpdateSubId = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.tabPageDeleteSubscription = new System.Windows.Forms.TabPage();
+            this.btnDeleteSubscription = new System.Windows.Forms.Button();
+            this.txtDeleteSubId = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
             this.tabControlMain.SuspendLayout();
             this.tabPagePeople.SuspendLayout();
             this.tabControlPeopleOperations.SuspendLayout();
@@ -110,6 +113,7 @@ namespace SubscriptionManager.Client
             this.tabPageGetOneSubscription.SuspendLayout();
             this.tabPageCreateSubscription.SuspendLayout();
             this.tabPageUpdateSubscription.SuspendLayout();
+            this.tabPageDeleteSubscription.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlMain
@@ -762,12 +766,43 @@ namespace SubscriptionManager.Client
             // 
             // tabPageDeleteSubscription
             // 
+            this.tabPageDeleteSubscription.Controls.Add(this.btnDeleteSubscription);
+            this.tabPageDeleteSubscription.Controls.Add(this.txtDeleteSubId);
+            this.tabPageDeleteSubscription.Controls.Add(this.label21);
             this.tabPageDeleteSubscription.Location = new System.Drawing.Point(4, 24);
             this.tabPageDeleteSubscription.Name = "tabPageDeleteSubscription";
             this.tabPageDeleteSubscription.Size = new System.Drawing.Size(762, 399);
             this.tabPageDeleteSubscription.TabIndex = 4;
             this.tabPageDeleteSubscription.Text = "Видалити";
             this.tabPageDeleteSubscription.UseVisualStyleBackColor = true;
+            // 
+            // btnDeleteSubscription
+            // 
+            this.btnDeleteSubscription.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnDeleteSubscription.ForeColor = System.Drawing.Color.Red;
+            this.btnDeleteSubscription.Location = new System.Drawing.Point(19, 75);
+            this.btnDeleteSubscription.Name = "btnDeleteSubscription";
+            this.btnDeleteSubscription.Size = new System.Drawing.Size(121, 31);
+            this.btnDeleteSubscription.TabIndex = 5;
+            this.btnDeleteSubscription.Text = "Видалити";
+            this.btnDeleteSubscription.UseVisualStyleBackColor = true;
+            this.btnDeleteSubscription.Click += new System.EventHandler(this.btnDeleteSubscription_Click);
+            // 
+            // txtDeleteSubId
+            // 
+            this.txtDeleteSubId.Location = new System.Drawing.Point(19, 36);
+            this.txtDeleteSubId.Name = "txtDeleteSubId";
+            this.txtDeleteSubId.Size = new System.Drawing.Size(300, 23);
+            this.txtDeleteSubId.TabIndex = 4;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(19, 18);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(143, 15);
+            this.label21.TabIndex = 3;
+            this.label21.Text = "Введіть ID для видалення:";
             // 
             // Form1
             // 
@@ -800,6 +835,8 @@ namespace SubscriptionManager.Client
             this.tabPageCreateSubscription.PerformLayout();
             this.tabPageUpdateSubscription.ResumeLayout(false);
             this.tabPageUpdateSubscription.PerformLayout();
+            this.tabPageDeleteSubscription.ResumeLayout(false);
+            this.tabPageDeleteSubscription.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -865,9 +902,6 @@ namespace SubscriptionManager.Client
         private Label label15;
         private TextBox txtCreateSubOwnerId;
         private Label label14;
-        private TabPage tabPageDeleteSubscription;
-
-        // --- (НОВЕ) Елементи для Оновлення Subscription ---
         private TabPage tabPageUpdateSubscription;
         private Button btnUpdateSubscription;
         private TextBox txtUpdateSubStatus;
@@ -878,5 +912,11 @@ namespace SubscriptionManager.Client
         private Label label19;
         private TextBox txtUpdateSubId;
         private Label label20;
+
+        // --- (НОВЕ) Елементи для Видалення Subscription ---
+        private TabPage tabPageDeleteSubscription;
+        private Button btnDeleteSubscription;
+        private TextBox txtDeleteSubId;
+        private Label label21;
     }
 }
