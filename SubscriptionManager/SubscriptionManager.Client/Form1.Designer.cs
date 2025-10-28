@@ -121,6 +121,15 @@ namespace SubscriptionManager.Client
             this.txtCreateMsgTitle = new System.Windows.Forms.TextBox();
             this.label28 = new System.Windows.Forms.Label();
             this.tabPageUpdateMessage = new System.Windows.Forms.TabPage();
+            this.btnUpdateMessage = new System.Windows.Forms.Button();
+            this.txtUpdateMsgSubId = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.txtUpdateMsgOwnerId = new System.Windows.Forms.TextBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.txtUpdateMsgTitle = new System.Windows.Forms.TextBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.txtUpdateMsgId = new System.Windows.Forms.TextBox();
+            this.label32 = new System.Windows.Forms.Label();
             this.tabPageDeleteMessage = new System.Windows.Forms.TabPage();
             this.tabControlMain.SuspendLayout();
             this.tabPagePeople.SuspendLayout();
@@ -145,6 +154,7 @@ namespace SubscriptionManager.Client
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllMessages)).BeginInit();
             this.tabPageGetOneMessage.SuspendLayout();
             this.tabPageCreateMessage.SuspendLayout();
+            this.tabPageUpdateMessage.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlMain
@@ -1071,12 +1081,96 @@ namespace SubscriptionManager.Client
             // 
             // tabPageUpdateMessage
             // 
+            this.tabPageUpdateMessage.Controls.Add(this.btnUpdateMessage);
+            this.tabPageUpdateMessage.Controls.Add(this.txtUpdateMsgSubId);
+            this.tabPageUpdateMessage.Controls.Add(this.label29);
+            this.tabPageUpdateMessage.Controls.Add(this.txtUpdateMsgOwnerId);
+            this.tabPageUpdateMessage.Controls.Add(this.label30);
+            this.tabPageUpdateMessage.Controls.Add(this.txtUpdateMsgTitle);
+            this.tabPageUpdateMessage.Controls.Add(this.label31);
+            this.tabPageUpdateMessage.Controls.Add(this.txtUpdateMsgId);
+            this.tabPageUpdateMessage.Controls.Add(this.label32);
             this.tabPageUpdateMessage.Location = new System.Drawing.Point(4, 24);
             this.tabPageUpdateMessage.Name = "tabPageUpdateMessage";
             this.tabPageUpdateMessage.Size = new System.Drawing.Size(762, 399);
             this.tabPageUpdateMessage.TabIndex = 3;
             this.tabPageUpdateMessage.Text = "Оновити";
             this.tabPageUpdateMessage.UseVisualStyleBackColor = true;
+            // 
+            // btnUpdateMessage
+            // 
+            this.btnUpdateMessage.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnUpdateMessage.Location = new System.Drawing.Point(19, 248);
+            this.btnUpdateMessage.Name = "btnUpdateMessage";
+            this.btnUpdateMessage.Size = new System.Drawing.Size(121, 31);
+            this.btnUpdateMessage.TabIndex = 24;
+            this.btnUpdateMessage.Text = "Оновити";
+            this.btnUpdateMessage.UseVisualStyleBackColor = true;
+            this.btnUpdateMessage.Click += new System.EventHandler(this.btnUpdateMessage_Click);
+            // 
+            // txtUpdateMsgSubId
+            // 
+            this.txtUpdateMsgSubId.Location = new System.Drawing.Point(19, 203);
+            this.txtUpdateMsgSubId.Name = "txtUpdateMsgSubId";
+            this.txtUpdateMsgSubId.Size = new System.Drawing.Size(300, 23);
+            this.txtUpdateMsgSubId.TabIndex = 23;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(19, 185);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(114, 15);
+            this.label29.TabIndex = 22;
+            this.label29.Text = "Введіть новий Sub ID:";
+            // 
+            // txtUpdateMsgOwnerId
+            // 
+            this.txtUpdateMsgOwnerId.Location = new System.Drawing.Point(19, 149);
+            this.txtUpdateMsgOwnerId.Name = "txtUpdateMsgOwnerId";
+            this.txtUpdateMsgOwnerId.Size = new System.Drawing.Size(300, 23);
+            this.txtUpdateMsgOwnerId.TabIndex = 21;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(19, 131);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(130, 15);
+            this.label30.TabIndex = 20;
+            this.label30.Text = "Введіть новий Owner ID:";
+            // 
+            // txtUpdateMsgTitle
+            // 
+            this.txtUpdateMsgTitle.Location = new System.Drawing.Point(19, 95);
+            this.txtUpdateMsgTitle.Name = "txtUpdateMsgTitle";
+            this.txtUpdateMsgTitle.Size = new System.Drawing.Size(300, 23);
+            this.txtUpdateMsgTitle.TabIndex = 19;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(19, 77);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(135, 15);
+            this.label31.TabIndex = 18;
+            this.label31.Text = "Введіть новий заголовок:";
+            // 
+            // txtUpdateMsgId
+            // 
+            this.txtUpdateMsgId.Location = new System.Drawing.Point(19, 38);
+            this.txtUpdateMsgId.Name = "txtUpdateMsgId";
+            this.txtUpdateMsgId.Size = new System.Drawing.Size(300, 23);
+            this.txtUpdateMsgId.TabIndex = 17;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(19, 20);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(147, 15);
+            this.label32.TabIndex = 16;
+            this.label32.Text = "Введіть ID для оновлення:";
             // 
             // tabPageDeleteMessage
             // 
@@ -1128,6 +1222,8 @@ namespace SubscriptionManager.Client
             this.tabPageGetOneMessage.PerformLayout();
             this.tabPageCreateMessage.ResumeLayout(false);
             this.tabPageCreateMessage.PerformLayout();
+            this.tabPageUpdateMessage.ResumeLayout(false);
+            this.tabPageUpdateMessage.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1224,8 +1320,6 @@ namespace SubscriptionManager.Client
         private Button btnGetMessageById;
         private TextBox txtMessageId;
         private Label label25;
-        private TabPage tabPageUpdateMessage;
-        private TabPage tabPageDeleteMessage;
         private TabPage tabPageCreateMessage;
         private Button btnCreateMessage;
         private TextBox txtCreateMsgSubId;
@@ -1234,5 +1328,18 @@ namespace SubscriptionManager.Client
         private Label label27;
         private TextBox txtCreateMsgTitle;
         private Label label28;
+        private TabPage tabPageDeleteMessage; // Порожня
+
+        // --- Елементи для Оновлення Message ---
+        private TabPage tabPageUpdateMessage;
+        private Button btnUpdateMessage;
+        private TextBox txtUpdateMsgSubId;
+        private Label label29;
+        private TextBox txtUpdateMsgOwnerId;
+        private Label label30;
+        private TextBox txtUpdateMsgTitle;
+        private Label label31;
+        private TextBox txtUpdateMsgId;
+        private Label label32;
     }
 }

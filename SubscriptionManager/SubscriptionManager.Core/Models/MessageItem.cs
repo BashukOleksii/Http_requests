@@ -1,7 +1,6 @@
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-// Переконайся, що простір імен правильний
 namespace SubscriptionManager.Core.Models
 {
     /// <summary>
@@ -26,14 +25,14 @@ namespace SubscriptionManager.Core.Models
         /// Кому надсилається повідомлення (ID користувача)
         /// </summary>
         [BsonElement("ownerId")]
-        [BsonRepresentation(BsonType.ObjectId)] // Додано для консистентності з іншими ID
+        [BsonRepresentation(BsonType.ObjectId)] 
         public string? OwnerId { get; set; }
 
         /// <summary>
         /// Ідентифікатор підписки, до якої відноситься повідомлення
         /// </summary>
         [BsonElement("subId")]
-        [BsonRepresentation(BsonType.ObjectId)] // Додано для консистентності з іншими ID
+        [BsonRepresentation(BsonType.ObjectId)] 
         public string? SubId { get; set; }
     }
 }
