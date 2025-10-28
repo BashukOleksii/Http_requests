@@ -28,167 +28,178 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tabControlMain = new System.Windows.Forms.TabControl();
-            this.tabPagePeople = new System.Windows.Forms.TabPage();
-            this.tabControlPeopleOperations = new System.Windows.Forms.TabControl();
-            this.tabPageUpdatePerson = new System.Windows.Forms.TabPage();
-            this.btnUpdatePerson = new System.Windows.Forms.Button();
-            this.txtUpdateEmail = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtUpdateName = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtUpdateId = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.tabPageDeletePerson = new System.Windows.Forms.TabPage();
-            this.tabPageSubscriptions = new System.Windows.Forms.TabPage();
-            this.tabControlMain.SuspendLayout();
-            this.tabPagePeople.SuspendLayout();
-            this.tabControlPeopleOperations.SuspendLayout();
-            this.tabPageUpdatePerson.SuspendLayout();
-            this.SuspendLayout();
+            tabControlMain = new TabControl();
+            tabPagePeople = new TabPage();
+            tabControlPeopleOperations = new TabControl();
+            tabPageUpdatePerson = new TabPage();
+            btnUpdatePerson = new Button();
+            txtUpdateEmail = new TextBox();
+            label6 = new Label();
+            txtUpdateName = new TextBox();
+            label7 = new Label();
+            txtUpdateId = new TextBox();
+            label8 = new Label();
+            tabPageDeletePerson = new TabPage();
+            tabPageSubscriptions = new TabPage();
+            tabControlMain.SuspendLayout();
+            tabPagePeople.SuspendLayout();
+            tabControlPeopleOperations.SuspendLayout();
+            tabPageUpdatePerson.SuspendLayout();
+            SuspendLayout();
             // 
             // tabControlMain
             // 
-            this.tabControlMain.Controls.Add(this.tabPagePeople);
-            this.tabControlMain.Controls.Add(this.tabPageSubscriptions);
-            this.tabControlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControlMain.Location = new System.Drawing.Point(0, 0);
-            this.tabControlMain.Name = "tabControlMain";
-            this.tabControlMain.SelectedIndex = 0;
-            this.tabControlMain.Size = new System.Drawing.Size(784, 461);
-            this.tabControlMain.TabIndex = 0;
+            tabControlMain.Controls.Add(tabPagePeople);
+            tabControlMain.Controls.Add(tabPageSubscriptions);
+            tabControlMain.Dock = DockStyle.Fill;
+            tabControlMain.Location = new Point(0, 0);
+            tabControlMain.Margin = new Padding(3, 4, 3, 4);
+            tabControlMain.Name = "tabControlMain";
+            tabControlMain.SelectedIndex = 0;
+            tabControlMain.Size = new Size(896, 615);
+            tabControlMain.TabIndex = 0;
             // 
             // tabPagePeople
             // 
-            this.tabPagePeople.Controls.Add(this.tabControlPeopleOperations);
-            this.tabPagePeople.Location = new System.Drawing.Point(4, 24);
-            this.tabPagePeople.Name = "tabPagePeople";
-            this.tabPagePeople.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPagePeople.Size = new System.Drawing.Size(776, 433);
-            this.tabPagePeople.TabIndex = 0;
-            this.tabPagePeople.Text = "Користувачі (People)";
-            this.tabPagePeople.UseVisualStyleBackColor = true;
+            tabPagePeople.Controls.Add(tabControlPeopleOperations);
+            tabPagePeople.Location = new Point(4, 29);
+            tabPagePeople.Margin = new Padding(3, 4, 3, 4);
+            tabPagePeople.Name = "tabPagePeople";
+            tabPagePeople.Padding = new Padding(3, 4, 3, 4);
+            tabPagePeople.Size = new Size(888, 582);
+            tabPagePeople.TabIndex = 0;
+            tabPagePeople.Text = "Користувачі (People)";
+            tabPagePeople.UseVisualStyleBackColor = true;
             // 
             // tabControlPeopleOperations
             // 
-            this.tabControlPeopleOperations.Controls.Add(this.tabPageUpdatePerson);
-            this.tabControlPeopleOperations.Controls.Add(this.tabPageDeletePerson);
-            this.tabControlPeopleOperations.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControlPeopleOperations.Location = new System.Drawing.Point(3, 3);
-            this.tabControlPeopleOperations.Name = "tabControlPeopleOperations";
-            this.tabControlPeopleOperations.SelectedIndex = 0;
-            this.tabControlPeopleOperations.Size = new System.Drawing.Size(770, 427);
-            this.tabControlPeopleOperations.TabIndex = 0;
+            tabControlPeopleOperations.Controls.Add(tabPageUpdatePerson);
+            tabControlPeopleOperations.Controls.Add(tabPageDeletePerson);
+            tabControlPeopleOperations.Dock = DockStyle.Fill;
+            tabControlPeopleOperations.Location = new Point(3, 4);
+            tabControlPeopleOperations.Margin = new Padding(3, 4, 3, 4);
+            tabControlPeopleOperations.Name = "tabControlPeopleOperations";
+            tabControlPeopleOperations.SelectedIndex = 0;
+            tabControlPeopleOperations.Size = new Size(882, 574);
+            tabControlPeopleOperations.TabIndex = 0;
             // 
             // tabPageUpdatePerson
             // 
-            this.tabPageUpdatePerson.Controls.Add(this.btnUpdatePerson);
-            this.tabPageUpdatePerson.Controls.Add(this.txtUpdateEmail);
-            this.tabPageUpdatePerson.Controls.Add(this.label6);
-            this.tabPageUpdatePerson.Controls.Add(this.txtUpdateName);
-            this.tabPageUpdatePerson.Controls.Add(this.label7);
-            this.tabPageUpdatePerson.Controls.Add(this.txtUpdateId);
-            this.tabPageUpdatePerson.Controls.Add(this.label8);
-            this.tabPageUpdatePerson.Location = new System.Drawing.Point(4, 24);
-            this.tabPageUpdatePerson.Name = "tabPageUpdatePerson";
-            this.tabPageUpdatePerson.Size = new System.Drawing.Size(762, 399);
-            this.tabPageUpdatePerson.TabIndex = 3;
-            this.tabPageUpdatePerson.Text = "Оновити";
-            this.tabPageUpdatePerson.UseVisualStyleBackColor = true;
+            tabPageUpdatePerson.Controls.Add(btnUpdatePerson);
+            tabPageUpdatePerson.Controls.Add(txtUpdateEmail);
+            tabPageUpdatePerson.Controls.Add(label6);
+            tabPageUpdatePerson.Controls.Add(txtUpdateName);
+            tabPageUpdatePerson.Controls.Add(label7);
+            tabPageUpdatePerson.Controls.Add(txtUpdateId);
+            tabPageUpdatePerson.Controls.Add(label8);
+            tabPageUpdatePerson.Location = new Point(4, 29);
+            tabPageUpdatePerson.Margin = new Padding(3, 4, 3, 4);
+            tabPageUpdatePerson.Name = "tabPageUpdatePerson";
+            tabPageUpdatePerson.Size = new Size(874, 541);
+            tabPageUpdatePerson.TabIndex = 3;
+            tabPageUpdatePerson.Text = "Оновити";
+            tabPageUpdatePerson.UseVisualStyleBackColor = true;
+            tabPageUpdatePerson.Click += tabPageUpdatePerson_Click;
             // 
             // btnUpdatePerson
             // 
-            this.btnUpdatePerson.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnUpdatePerson.Location = new System.Drawing.Point(19, 192);
-            this.btnUpdatePerson.Name = "btnUpdatePerson";
-            this.btnUpdatePerson.Size = new System.Drawing.Size(121, 31);
-            this.btnUpdatePerson.TabIndex = 6;
-            this.btnUpdatePerson.Text = "Оновити";
-            this.btnUpdatePerson.UseVisualStyleBackColor = true;
-            this.btnUpdatePerson.Click += new System.EventHandler(this.btnUpdatePerson_Click);
+            btnUpdatePerson.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            btnUpdatePerson.Location = new Point(22, 256);
+            btnUpdatePerson.Margin = new Padding(3, 4, 3, 4);
+            btnUpdatePerson.Name = "btnUpdatePerson";
+            btnUpdatePerson.Size = new Size(138, 41);
+            btnUpdatePerson.TabIndex = 6;
+            btnUpdatePerson.Text = "Оновити";
+            btnUpdatePerson.UseVisualStyleBackColor = true;
+            btnUpdatePerson.Click += btnUpdatePerson_Click;
             // 
             // txtUpdateEmail
             // 
-            this.txtUpdateEmail.Location = new System.Drawing.Point(19, 147);
-            this.txtUpdateEmail.Name = "txtUpdateEmail";
-            this.txtUpdateEmail.Size = new System.Drawing.Size(300, 23);
-            this.txtUpdateEmail.TabIndex = 5;
+            txtUpdateEmail.Location = new Point(22, 196);
+            txtUpdateEmail.Margin = new Padding(3, 4, 3, 4);
+            txtUpdateEmail.Name = "txtUpdateEmail";
+            txtUpdateEmail.Size = new Size(342, 27);
+            txtUpdateEmail.TabIndex = 5;
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(19, 129);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(110, 15);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "Введіть новий Email:";
+            label6.AutoSize = true;
+            label6.Location = new Point(22, 172);
+            label6.Name = "label6";
+            label6.Size = new Size(152, 20);
+            label6.TabIndex = 4;
+            label6.Text = "Введіть новий Email:";
             // 
             // txtUpdateName
             // 
-            this.txtUpdateName.Location = new System.Drawing.Point(19, 93);
-            this.txtUpdateName.Name = "txtUpdateName";
-            this.txtUpdateName.Size = new System.Drawing.Size(300, 23);
-            this.txtUpdateName.TabIndex = 3;
+            txtUpdateName.Location = new Point(22, 124);
+            txtUpdateName.Margin = new Padding(3, 4, 3, 4);
+            txtUpdateName.Name = "txtUpdateName";
+            txtUpdateName.Size = new Size(342, 27);
+            txtUpdateName.TabIndex = 3;
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(19, 75);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(103, 15);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "Введіть нове ім\'я:";
+            label7.AutoSize = true;
+            label7.Location = new Point(22, 100);
+            label7.Name = "label7";
+            label7.Size = new Size(131, 20);
+            label7.TabIndex = 2;
+            label7.Text = "Введіть нове ім'я:";
             // 
             // txtUpdateId
             // 
-            this.txtUpdateId.Location = new System.Drawing.Point(19, 38);
-            this.txtUpdateId.Name = "txtUpdateId";
-            this.txtUpdateId.Size = new System.Drawing.Size(300, 23);
-            this.txtUpdateId.TabIndex = 1;
+            txtUpdateId.Location = new Point(22, 51);
+            txtUpdateId.Margin = new Padding(3, 4, 3, 4);
+            txtUpdateId.Name = "txtUpdateId";
+            txtUpdateId.Size = new Size(342, 27);
+            txtUpdateId.TabIndex = 1;
             // 
             // label8
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(19, 20);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(147, 15);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "Введіть ID для оновлення:";
+            label8.AutoSize = true;
+            label8.Location = new Point(22, 27);
+            label8.Name = "label8";
+            label8.Size = new Size(191, 20);
+            label8.TabIndex = 0;
+            label8.Text = "Введіть ID для оновлення:";
             // 
             // tabPageDeletePerson
             // 
-            this.tabPageDeletePerson.Location = new System.Drawing.Point(4, 24);
-            this.tabPageDeletePerson.Name = "tabPageDeletePerson";
-            this.tabPageDeletePerson.Size = new System.Drawing.Size(762, 399);
-            this.tabPageDeletePerson.TabIndex = 4;
-            this.tabPageDeletePerson.Text = "Видалити";
-            this.tabPageDeletePerson.UseVisualStyleBackColor = true;
+            tabPageDeletePerson.Location = new Point(4, 29);
+            tabPageDeletePerson.Margin = new Padding(3, 4, 3, 4);
+            tabPageDeletePerson.Name = "tabPageDeletePerson";
+            tabPageDeletePerson.Size = new Size(872, 536);
+            tabPageDeletePerson.TabIndex = 4;
+            tabPageDeletePerson.Text = "Видалити";
+            tabPageDeletePerson.UseVisualStyleBackColor = true;
             // 
             // tabPageSubscriptions
             // 
-            this.tabPageSubscriptions.Location = new System.Drawing.Point(4, 24);
-            this.tabPageSubscriptions.Name = "tabPageSubscriptions";
-            this.tabPageSubscriptions.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageSubscriptions.Size = new System.Drawing.Size(776, 433);
-            this.tabPageSubscriptions.TabIndex = 1;
-            this.tabPageSubscriptions.Text = "Підписки (Subscriptions)";
-            this.tabPageSubscriptions.UseVisualStyleBackColor = true;
+            tabPageSubscriptions.Location = new Point(4, 29);
+            tabPageSubscriptions.Margin = new Padding(3, 4, 3, 4);
+            tabPageSubscriptions.Name = "tabPageSubscriptions";
+            tabPageSubscriptions.Padding = new Padding(3, 4, 3, 4);
+            tabPageSubscriptions.Size = new Size(888, 582);
+            tabPageSubscriptions.TabIndex = 1;
+            tabPageSubscriptions.Text = "Підписки (Subscriptions)";
+            tabPageSubscriptions.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 461);
-            this.Controls.Add(this.tabControlMain);
-            this.Name = "Form1";
-            this.Text = "Subscription Manager Client";
-            this.tabControlMain.ResumeLayout(false);
-            this.tabPagePeople.ResumeLayout(false);
-            this.tabControlPeopleOperations.ResumeLayout(false);
-            this.tabPageUpdatePerson.ResumeLayout(false);
-            this.tabPageUpdatePerson.PerformLayout();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(896, 615);
+            Controls.Add(tabControlMain);
+            Margin = new Padding(3, 4, 3, 4);
+            Name = "Form1";
+            Text = "Subscription Manager Client";
+            tabControlMain.ResumeLayout(false);
+            tabPagePeople.ResumeLayout(false);
+            tabControlPeopleOperations.ResumeLayout(false);
+            tabPageUpdatePerson.ResumeLayout(false);
+            tabPageUpdatePerson.PerformLayout();
+            ResumeLayout(false);
         }
 
         #endregion

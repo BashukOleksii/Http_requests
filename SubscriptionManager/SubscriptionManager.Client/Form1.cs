@@ -80,5 +80,10 @@ namespace SubscriptionManager.Client
                 MessageBox.Show($"Сталася помилка: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void tabPageUpdatePerson_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
