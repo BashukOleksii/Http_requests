@@ -159,7 +159,7 @@ namespace SubscriptionManager.Client
                 MessageBox.Show($"Сталася помилка: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        
         private async void btnDeletePerson_Click(object sender, EventArgs e)
         {
             string id = txtDeleteId.Text.Trim();
@@ -215,7 +215,6 @@ namespace SubscriptionManager.Client
             try
             {
                 dgvAllSubscriptions.DataSource = null;
-                // ВАЖЛИВО: Переконайся, що твій API має ендпоінт "api/Subscriptions"
                 var subList = await _httpClient.GetFromJsonAsync<List<SubscriptionItem>>("api/Subscriptions", _jsonOptions);
 
                 if (subList != null && subList.Any())
@@ -249,7 +248,6 @@ namespace SubscriptionManager.Client
                 txtSubServiceResult.Text = "";
                 txtSubStatusResult.Text = "";
 
-                // ВАЖЛИВО: Переконайся, що твій API має ендпоінт "api/Subscriptions/{id}"
                 var sub = await _httpClient.GetFromJsonAsync<SubscriptionItem>($"api/Subscriptions/{id}", _jsonOptions);
 
                 if (sub != null)
@@ -267,6 +265,63 @@ namespace SubscriptionManager.Client
             catch (Exception ex)
             {
                 MessageBox.Show($"Помилка при отриманні даних: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // --- (НОВЕ) Обробник POST (Створення Subscription) ---
+        private async void btnCreateSubscription_Click(object sender, EventArgs e)
+        {
+            // 1. Збираємо дані
+            string ownerId = txtCreateSubOwnerId.Text.Trim();
+            string service = txtCreateSubService.Text.Trim();
+            string statusStr = txtCreateSubStatus.Text.Trim();
+
+            // 2. Валідація
+            if (string.IsNullOrEmpty(ownerId) || string.IsNullOrEmpty(service) || string.IsNullOrEmpty(statusStr))
+            {
+                MessageBox.Show("Owner ID, Сервіс та Статус не можуть бути порожніми.", "Помилка валідації", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!int.TryParse(statusStr, out int statusInt) || !Enum.IsDefined(typeof(SubStatus), statusInt))
+            {
+                 MessageBox.Show("Невірний формат статусу. Введіть число (напр., 1 = Expectation, 2 = Active).", "Помилка валідації", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                 return;
+            }
+
+            // 3. Створюємо об'єкт
+            var newSub = new SubscriptionItem
+            {
+                OwnerId = ownerId,
+                Service = service,
+                Status = (SubStatus)statusInt // Приводимо int до enum
+            };
+
+            try
+            {
+                // 4. Відправляємо POST-запит
+                var response = await _httpClient.PostAsJsonAsync("api/Subscriptions", newSub, _jsonOptions);
+
+                // 5. Обробляємо відповідь
+                if (response.IsSuccessStatusCode)
+                {
+                    var createdSub = await response.Content.ReadFromJsonAsync<SubscriptionItem>(_jsonOptions);
+                    MessageBox.Show($"Підписку успішно створено!\nID: {createdSub?.Id}\nСервіс: {createdSub?.Service}", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Очищуємо поля
+                    txtCreateSubOwnerId.Text = "";
+                    txtCreateSubService.Text = "";
+                    txtCreateSubStatus.Text = "";
+                }
+                else
+                {
+                    string errorContent = await response.Content.ReadAsStringAsync();
+                    MessageBox.Show($"Помилка: {response.StatusCode}\n{errorContent}", "Помилка сервера", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Сталася помилка: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
