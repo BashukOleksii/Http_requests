@@ -38,7 +38,7 @@ namespace SubscriptionManager.API.Services
 
         public Task<SubscriptionItem> GetByIdAsync(string id)
         {
-            var sub = _subRepository.GetByIdAsync(id);
+            var sub =  _subRepository.GetByIdAsync(id);
             if (sub is null)
                 throw new KeyNotFoundException($"Не знайдено користувача за вказаним id {id}");
 
