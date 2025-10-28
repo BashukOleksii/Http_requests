@@ -11,9 +11,11 @@ namespace SubscriptionManager.API.Controllers
     {
         private readonly ISubService _subService;
 
+
         public SubController(ISubService subService)
         {
             _subService = subService;
+
         }
 
         [HttpGet]
@@ -22,6 +24,7 @@ namespace SubscriptionManager.API.Controllers
             try
             {
                 var subs = await _subService.GetAllAsync();
+
                 return Ok(subs);
             }
             catch (KeyNotFoundException kex)
@@ -38,6 +41,7 @@ namespace SubscriptionManager.API.Controllers
                 var sub = await _subService.GetByIdAsync(id);
                 return Ok(sub);
             }
+
             catch (KeyNotFoundException kex)
             {
                 return NotFound(kex.Message);
@@ -60,6 +64,7 @@ namespace SubscriptionManager.API.Controllers
         }
 
     }
+
 
 
 }
