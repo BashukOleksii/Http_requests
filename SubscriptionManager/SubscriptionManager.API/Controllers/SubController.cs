@@ -63,6 +63,38 @@ namespace SubscriptionManager.API.Controllers
             }
         }
 
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(string id, SubscriptionItem item)
+        {
+            try
+            {
+                await _subService.UpdateAsync(id, item);
+                return NoContent();
+            }
+            catch (KeyNotFoundException kex)
+            {
+                return NotFound(kex.Message);
+            }
+            catch (ArgumentException aex)
+            {
+                return NotFound(aex.Message);
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(string id)
+        {
+            try
+            {
+                await _subService.DeleteAsync(id);
+                return NoContent();
+            }
+            catch (KeyNotFoundException kex)
+            {
+                return NotFound(kex.Message);
+            }
+        }
+
     }
 
 
